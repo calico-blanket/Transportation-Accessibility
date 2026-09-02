@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>視覚障害のある参加者への交通アクセシビリティ対応｜4者の生成AI提案の比較</title>
+<style>
+  :root{
+    --navy:#12395c;
+    --navy-dark:#0b2338;
+    --bg:#fbfaf7;
+    --card-bg:#ffffff;
+    --border:#d8d4ca;
+    --text:#1c1c1c;
+    --text-sub:#4a4a4a;
+    --focus:#c65b00;
+    --purpose-bg:#eef3f7;
+
+    --c-copilot:#0b5da8;
+    --c-chatgpt:#0f7a4a;
+    --c-3:#6a3d9a;
+    --c-gemini:#b3560c;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"BIZ UDPGothic","BIZ UDGothic","Meiryo","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+    line-height:1.8;
+    font-size:18px;
+  }
+
+  .skip-link{
+    position:absolute;
+    left:-9999px;
+    top:0;
+    background:var(--navy-dark);
+    color:#fff;
+    padding:10px 16px;
+    z-index:100;
+    border-radius:0 0 6px 0;
+  }
+  .skip-link:focus{
+    left:0;
+  }
+
+  a{color:var(--navy);}
+  a:focus, button:focus, summary:focus{
+    outline:3px solid var(--focus);
+    outline-offset:2px;
+  }
+
+  header.page-header{
+    background:var(--navy);
+    color:#fff;
+    padding:32px 20px 28px;
+  }
+  header.page-header .inner{
+    max-width:900px;
+    margin:0 auto;
+  }
+  header.page-header h1{
+    font-size:1.6rem;
+    margin:0 0 6px;
+    line-height:1.5;
+  }
+  header.page-header p{
+    margin:0;
+    color:#dce6ee;
+    font-size:1rem;
+  }
+
+  nav.toc{
+    max-width:900px;
+    margin:20px auto 0;
+    padding:0 20px;
+  }
+  nav.toc h2{
+    font-size:1rem;
+    margin:0 0 8px;
+    color:var(--text-sub);
+  }
+  nav.toc ol{
+    margin:0;
+    padding-left:1.2em;
+    columns:2;
+    font-size:0.95rem;
+  }
+  nav.toc li{margin-bottom:4px;}
+
+  main{
+    max-width:900px;
+    margin:0 auto;
+    padding:20px 20px 60px;
+  }
+
+  section{
+    margin-top:36px;
+  }
+
+  .intro-box{
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-left:6px solid var(--navy);
+    border-radius:8px;
+    padding:18px 20px;
+  }
+
+  h2.section-title{
+    font-size:1.3rem;
+    color:var(--navy-dark);
+    border-bottom:2px solid var(--border);
+    padding-bottom:8px;
+    margin-bottom:14px;
+  }
+
+  .common-list{
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:18px 24px;
+  }
+  .common-list li{margin-bottom:8px;}
+
+  details.theme{
+    background:var(--card-bg);
+    border:1px solid var(--border);
+    border-radius:8px;
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  details.theme > summary{
+    cursor:pointer;
+    list-style:none;
+    padding:16px 20px;
+    font-size:1.1rem;
+    font-weight:700;
+    color:var(--navy-dark);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+  details.theme > summary::-webkit-details-marker{display:none;}
+  details.theme > summary .marker{
+    font-size:0.85rem;
+    color:var(--text-sub);
+    font-weight:400;
+    white-space:nowrap;
+  }
+  details.theme[open] > summary{
+    border-bottom:1px solid var(--border);
+  }
+  details.theme > summary:hover{
+    background:#f3f1ea;
+  }
+
+  .theme-body{
+    padding:16px 20px 20px;
+  }
+
+  .purpose{
+    background:var(--purpose-bg);
+    border-radius:6px;
+    padding:10px 14px;
+    font-size:0.98rem;
+    margin:0 0 16px;
+  }
+  .purpose strong{color:var(--navy-dark);}
+
+  .ai-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  @media (min-width:640px){
+    .ai-grid{grid-template-columns:1fr 1fr;}
+  }
+
+  .ai-card{
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:12px 14px;
+  }
+  .ai-badge{
+    display:inline-block;
+    color:#fff;
+    font-size:0.85rem;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:999px;
+    margin-bottom:8px;
+  }
+  .ai-card.copilot .ai-badge{background:var(--c-copilot);}
+  .ai-card.chatgpt .ai-badge{background:var(--c-chatgpt);}
+  .ai-card.doc3 .ai-badge{background:var(--c-3);}
+  .ai-card.gemini .ai-badge{background:var(--c-gemini);}
+
+  .ai-card p{margin:0;font-size:0.98rem;color:var(--text);}
+  .ai-card p.small-note{
+    margin-top:6px;
+    font-size:0.85rem;
+    color:var(--text-sub);
+  }
+
+  footer{
+    max-width:900px;
+    margin:40px auto 0;
+    padding:20px;
+    font-size:0.9rem;
+    color:var(--text-sub);
+    border-top:1px solid var(--border);
+  }
+
+  @media print{
+    details.theme{border:1px solid #999;}
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">メインコンテンツへスキップ</a>
+
+<header class="page-header">
+  <div class="inner">
+    <h1>視覚障害のある参加者への交通アクセシビリティ対応</h1>
+    <p>単日開催セミナーを想定した、4者の生成AI（Copilot／ChatGPT／Claude／Gemini）による提案の比較</p>
+  </div>
+</header>
+
+<nav class="toc" aria-label="目次">
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#common">共通する考え方</a></li>
+    <li><a href="#theme1">事前に何を調べるか</a></li>
+    <li><a href="#theme2">誰が、どう誘導するか</a></li>
+    <li><a href="#theme3">案内文をどう書くか</a></li>
+    <li><a href="#theme4">申込時に何を聞くか</a></li>
+    <li><a href="#theme5">当日の体制</a></li>
+  </ol>
+</nav>
+
+<main id="main-content">
+
+  <section id="common">
+    <div class="intro-box">
+      <p>4者とも、主催者が現地に不慣れ・遠方在住であっても対応は可能という立場です。参加者に付き添って移動支援をすること自体は前提とせず、<strong>「参加者が安全に来場できるよう、必要な情報と相談先を事前に整理して渡す」</strong>という設計を共通して提案しています。</p>
+    </div>
+    <div class="common-list" style="margin-top:14px;">
+      <ul>
+        <li>「駅から徒歩○分」だけでは不十分。段差・信号・点字ブロックなど具体的な情報が必要。</li>
+        <li>申込や事前連絡の段階で、個別の配慮事項を確認する窓口を設ける。</li>
+        <li>当日に迷った場合の緊急連絡先を用意する。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="theme1">
+    <h2 class="section-title">1. 事前に何を調べるか（駅・経路・会場）</h2>
+    <details class="theme" open>
+      <summary>調査項目の具体例<span class="marker">タップで詳細を開閉</span></summary>
+      <div class="theme-body">
+        <p class="purpose"><strong>目的：</strong>参加者が一人で来場しても迷わず・危険なく会場にたどり着けるかを、主催者が事前に把握するため。</p>
+        <div class="ai-grid">
+          <div class="ai-card copilot">
+            <span class="ai-badge">Copilot</span>
+            <p>最寄駅のバリアフリー情報、会場の入口・段差・受付位置を確認。</p>
+          </div>
+          <div class="ai-card chatgpt">
+            <span class="ai-badge">ChatGPT</span>
+            <p>駅員対応の有無・改札数から、交差点・信号・坂道・階段まで、経路上の要素を細かくリスト化。</p>
+          </div>
+          <div class="ai-card doc3">
+            <span class="ai-badge">Claude</span>
+            <p>駅の公式バリアフリー情報ページや駅構内図PDFを使い、出口ごとの設備の違いを照合する方法を提示。</p>
+          </div>
+          <div class="ai-card gemini">
+            <span class="ai-badge">Gemini</span>
+            <p>点字ブロックの連続性、音響式信号の有無、歩道橋・地下道など「注意が必要な分岐」まで具体的に確認。</p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section id="theme2">
+    <h2 class="section-title">2. 誰が、どう誘導するか</h2>
+    <details class="theme">
+      <summary>支援の担い手をどう考えるか<span class="marker">タップで詳細を開閉</span></summary>
+      <div class="theme-body">
+        <p class="purpose"><strong>目的：</strong>主催者が現地にいなくても、確実に助けを得られる相手（駅・会場スタッフ等）に参加者をつなぐため。</p>
+        <div class="ai-grid">
+          <div class="ai-card copilot">
+            <span class="ai-badge">Copilot</span>
+            <p>遠方主催者でもできる情報収集（会場管理者への問い合わせ、ストリートビュー確認等）を整理。</p>
+          </div>
+          <div class="ai-card chatgpt">
+            <span class="ai-badge">ChatGPT</span>
+            <p>主催者・交通事業者・参加者本人の役割を明確に分担。「主催者は誘導しない」ことを案内文にも明記。</p>
+          </div>
+          <div class="ai-card doc3">
+            <span class="ai-badge">Claude</span>
+            <p><strong>駅員による無料の誘導サービス（改札〜ホーム）を案内すること</strong>を最優先策と位置づける独自の視点。会場スタッフへの一時的な誘導依頼も提案。</p>
+            <p class="small-note">理由：経路を文字で説明する方法は手間がかかる割に、歩き方の癖は人によって異なるため効果が限定的。それよりも、駅員による公式な人的支援へ確実につなぐ設計の方が、事故が少なく現実的と位置づけている。</p>
+          </div>
+          <div class="ai-card gemini">
+            <span class="ai-badge">Gemini</span>
+            <p>会場ビルの受付・警備員に事前連絡し、迷っている参加者への声かけ・案内を依頼する具体的な進め方を提示。</p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section id="theme3">
+    <h2 class="section-title">3. 案内文をどう書くか</h2>
+    <details class="theme">
+      <summary>事前案内・案内文の工夫<span class="marker">タップで詳細を開閉</span></summary>
+      <div class="theme-body">
+        <p class="purpose"><strong>目的：</strong>参加者本人が状況を判断し、自分に合った移動方法や相談先を選べるようにするため。</p>
+        <div class="ai-grid">
+          <div class="ai-card copilot">
+            <span class="ai-badge">Copilot</span>
+            <p>駅の設備と「事前連絡してほしい」旨を伝える簡潔な文例を提示。</p>
+          </div>
+          <div class="ai-card chatgpt">
+            <span class="ai-badge">ChatGPT</span>
+            <p>最寄駅・改札・徒歩時間・注意点に加え、「公開情報に基づく」旨の注記まで含めた具体的な文例。</p>
+          </div>
+          <div class="ai-card doc3">
+            <span class="ai-badge">Claude</span>
+            <p>文章の完成度よりも、駅の誘導サービスへ確実につなぐ内容になっているかを重視。</p>
+          </div>
+          <div class="ai-card gemini">
+            <span class="ai-badge">Gemini</span>
+            <p>「すぐ」「あっち」等の感覚語を避け、距離・方向を数値で明記。<strong>画像化した地図やPDFのみの案内は読み上げソフトで読めない</strong>ため避けるべき、という指摘は4者の中でGeminiのみ。</p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section id="theme4">
+    <h2 class="section-title">4. 申込時に何を聞くか</h2>
+    <details class="theme">
+      <summary>個別ヒアリングの設計<span class="marker">タップで詳細を開閉</span></summary>
+      <div class="theme-body">
+        <p class="purpose"><strong>目的：</strong>「視覚障害がある」という情報だけで一律の対応を決めず、本人が必要とする支援を把握するため。</p>
+        <div class="ai-grid">
+          <div class="ai-card copilot">
+            <span class="ai-badge">Copilot</span>
+            <p>配慮事項を尋ねる自由記述欄を申込フォームに設置。</p>
+          </div>
+          <div class="ai-card chatgpt">
+            <span class="ai-badge">ChatGPT</span>
+            <p>「移動について伝えておきたいことは？」という自由記述欄を用意。</p>
+          </div>
+          <div class="ai-card doc3">
+            <span class="ai-badge">Claude</span>
+            <p>障害の程度、白杖・盲導犬の使用有無、単独歩行か同行者ありかまで、個別ヒアリングの窓口で具体的に確認。</p>
+          </div>
+          <div class="ai-card gemini">
+            <span class="ai-badge">Gemini</span>
+            <p>この項目については明記なし（案内文・当日体制の設計に重点）。</p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section id="theme5">
+    <h2 class="section-title">5. 当日の体制</h2>
+    <details class="theme">
+      <summary>当日、何かあったときの対応<span class="marker">タップで詳細を開閉</span></summary>
+      <div class="theme-body">
+        <p class="purpose"><strong>目的：</strong>現地に案内要員を配置できなくても、迷った際に助けを求められる状態を作るため。</p>
+        <div class="ai-grid">
+          <div class="ai-card copilot">
+            <span class="ai-badge">Copilot</span>
+            <p>まとめの中で簡潔に言及するにとどまる。</p>
+          </div>
+          <div class="ai-card chatgpt">
+            <span class="ai-badge">ChatGPT</span>
+            <p>「駅からの誘導は行わない」ことを明示した上で、鉄道・バス会社への事前相談を勧める形で誘導。</p>
+          </div>
+          <div class="ai-card doc3">
+            <span class="ai-badge">Claude</span>
+            <p>主催者・会場スタッフの携帯番号を伝え、「迷ったら電話をもらえば外まで迎える」という最低限の安全網を用意。</p>
+          </div>
+          <div class="ai-card gemini">
+            <span class="ai-badge">Gemini</span>
+            <p>電話サポート担当を開場前後に固定配置し、加えて出入口に近い配慮席をあらかじめ確保することまで提案。</p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+</main>
+
+<footer>
+  <p>本資料は、Copilot・ChatGPT・Gemini・Claudeの4者の提案内容をもとに、共有・説明用に項目を再整理したものです。各AIの原文とは表現が異なります。</p>
+</footer>
+
+</body>
+</html>
