@@ -8,6 +8,7 @@
 |---|---|---|
 | 簡易版 | https://calico-blanket.github.io/Transportation-Accessibility/ | 4者の提案を項目ごとに簡潔に並べたバージョン |
 | 詳細版 | https://calico-blanket.github.io/Transportation-Accessibility/detail/ | 各項目について、具体例や「なぜその提案になったか」という背景まで補足したバージョン |
+| CG版 | https://calico-blanket.github.io/Transportation-Accessibility/chatGPT/ | 各項目について、具体例や「なぜその提案になったか」のchatGPT版 |
 
 ## 経緯
 
