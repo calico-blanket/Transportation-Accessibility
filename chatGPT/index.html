@@ -3,2381 +3,402 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>交通・地理アクセシビリティ｜生成AI4者の視点比較</title>
-
+<meta name="color-scheme" content="light">
+<title>交通・地理アクセシビリティ｜生成AI4者の視点比較と統合整理</title>
+<meta name="description" content="Gemini、ChatGPT、Claude、Copilotの提案と、当事者等のオープンチャットで共有された経験・提案を比較し、イベントの交通・地理・情報アクセシビリティを考えるための共有資料。">
 <style>
 :root{
-  --bg:#f6f8f9;
-  --white:#ffffff;
-  --text:#17212b;
-  --sub:#4c5b66;
-  --line:#c7d1d7;
-
-  --navy:#153d5a;
-  --blue:#276b91;
-  --green:#286753;
-  --amber:#805400;
-  --purple:#674b7c;
-
-  --blue-bg:#edf6fb;
-  --green-bg:#eef8f3;
-  --amber-bg:#fff6df;
-
-  --focus:#ffbf47;
-
-  --max:1180px;
+  --bg:#f5f7f8; --surface:#fff; --surface2:#eef3f5; --ink:#17212b; --muted:#4d5d68;
+  --line:#bcc9d0; --navy:#153d5a; --blue:#1b6088; --teal:#176854; --amber:#835100;
+  --amberbg:#fff4dd; --bluebg:#edf6fb; --greenbg:#edf8f3; --focus:#ffbf47;
+  --shadow:0 2px 12px rgba(19,54,78,.07); --radius:16px; --max:1180px;
 }
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  margin:0;
-  color:var(--text);
-  background:var(--bg);
-  font-family:
-    Meiryo,
-    "BIZ UDPGothic",
-    "Yu Gothic",
-    YuGothic,
-    system-ui,
-    sans-serif;
-  font-size:18px;
-  line-height:1.85;
-}
-
-a{
-  color:#075d9a;
-  text-underline-offset:.2em;
-}
-
-a:focus-visible,
-summary:focus-visible{
-  outline:4px solid var(--focus);
-  outline-offset:3px;
-}
-
-.skip{
-  position:absolute;
-  top:-100px;
-  left:1rem;
-  padding:.7rem 1rem;
-  color:white;
-  background:black;
-  z-index:100;
-}
-
-.skip:focus{
-  top:1rem;
-}
-
-/* ---------- HERO ---------- */
-
-header{
-  color:white;
-  background:
-    linear-gradient(
-      135deg,
-      #153d5a,
-      #225e76
-    );
-}
-
-.hero{
-  max-width:var(--max);
-  margin:auto;
-  padding:3.5rem 1.5rem 2.8rem;
-
-  display:grid;
-  grid-template-columns:1.5fr .8fr;
-  gap:2rem;
-  align-items:center;
-}
-
-.kicker{
-  font-size:.9rem;
-  font-weight:bold;
-  letter-spacing:.08em;
-}
-
-h1{
-  margin:.4rem 0 1rem;
-  line-height:1.25;
-  font-size:clamp(2rem,5vw,3.6rem);
-}
-
-.lead{
-  max-width:60rem;
-  margin:0;
-  font-size:1.12rem;
-}
-
-.hero-graphic{
-  text-align:center;
-}
-
-.hero-graphic svg{
-  max-width:280px;
-  width:100%;
-}
-
-.hero-note{
-  grid-column:1/-1;
-  padding:1rem 1.2rem;
-  border:1px solid rgba(255,255,255,.3);
-  border-radius:12px;
-  background:rgba(255,255,255,.12);
-}
-
-/* ---------- NAV ---------- */
-
-nav{
-  background:white;
-  border-bottom:1px solid var(--line);
-}
-
-.nav-inner{
-  max-width:var(--max);
-  margin:auto;
-  padding:.8rem 1.5rem;
-}
-
-nav ul{
-  display:flex;
-  flex-wrap:wrap;
-  gap:.3rem 1.2rem;
-  margin:.3rem 0;
-  padding-left:1.3rem;
-}
-
-nav a{
-  font-weight:bold;
-}
-
-/* ---------- BASIC ---------- */
-
-main{
-  max-width:var(--max);
-  margin:auto;
-  padding:2.5rem 1.5rem 5rem;
-}
-
-section{
-  margin-bottom:4rem;
-}
-
-h2{
-  margin-top:0;
-  padding-bottom:.45rem;
-  color:var(--navy);
-  font-size:1.8rem;
-  line-height:1.45;
-  border-bottom:3px solid #b7cad4;
-}
-
-h3{
-  color:#203d51;
-  font-size:1.28rem;
-  line-height:1.5;
-}
-
-p{
-  max-width:78ch;
-}
-
-.card{
-  padding:1.25rem;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:14px;
-}
-
-/* ---------- FOUR AREAS ---------- */
-
-.four{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1rem;
-}
-
-.icon{
-  width:60px;
-  height:60px;
-  display:grid;
-  place-items:center;
-
-  border-radius:15px;
-  background:#eef3f5;
-}
-
-.icon svg{
-  width:34px;
-  height:34px;
-
-  fill:none;
-  stroke:var(--navy);
-  stroke-width:1.8;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-
-.card h3{
-  margin:.6rem 0 .35rem;
-}
-
-/* ---------- CALLOUT ---------- */
-
-.callout{
-  margin:1.4rem 0;
-  padding:1rem 1.2rem;
-
-  background:var(--blue-bg);
-  border-left:6px solid var(--blue);
-  border-radius:10px;
-}
-
-.callout.green{
-  background:var(--green-bg);
-  border-left-color:var(--green);
-}
-
-.callout.amber{
-  background:var(--amber-bg);
-  border-left-color:var(--amber);
-}
-
-/* ---------- STORY ---------- */
-
-.story{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:.6rem;
-  margin:1.5rem 0;
-}
-
-.step{
-  padding:.9rem;
-
-  text-align:center;
-  font-weight:bold;
-
-  background:white;
-  border:1px solid var(--line);
-  border-radius:12px;
-}
-
-.number{
-  width:2.1rem;
-  height:2.1rem;
-  line-height:2.1rem;
-
-  display:block;
-  margin:0 auto .6rem;
-
-  color:white;
-  background:var(--navy);
-  border-radius:50%;
-}
-
-.step small{
-  display:block;
-  margin-top:.5rem;
-
-  color:var(--sub);
-  font-weight:normal;
-  line-height:1.55;
-}
-
-/* ---------- TABLE ---------- */
-
-.table-wrap{
-  overflow-x:auto;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:14px;
-}
-
-table{
-  border-collapse:collapse;
-  width:100%;
-  min-width:1000px;
-}
-
-caption{
-  padding:1rem;
-  text-align:left;
-  font-weight:bold;
-  background:#eaf0f3;
-}
-
-th,
-td{
-  padding:.85rem;
-  border:1px solid var(--line);
-  text-align:left;
-  vertical-align:top;
-}
-
-thead th{
-  color:white;
-  background:var(--navy);
-}
-
-tbody th{
-  width:17%;
-  color:#17374c;
-  background:#edf3f5;
-}
-
-/* ---------- AI CARDS ---------- */
-
-.ai-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:1rem;
-}
-
-.ai{
-  border-top:6px solid var(--blue);
-}
-
-.ai.gpt{
-  border-top-color:var(--green);
-}
-
-.ai.claude{
-  border-top-color:var(--amber);
-}
-
-.ai.copilot{
-  border-top-color:var(--purple);
-}
-
-.ai-head{
-  display:flex;
-  gap:.7rem;
-  align-items:center;
-}
-
-.ai-mark{
-  width:46px;
-  height:46px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:50%;
-  background:#edf3f5;
-
-  color:var(--navy);
-  font-weight:bold;
-}
-
-.tag{
-  display:inline-block;
-
-  padding:.15rem .55rem;
-
-  font-size:.84rem;
-  font-weight:bold;
-
-  background:#eef2f4;
-  border:1px solid #cad4d9;
-  border-radius:999px;
-}
-
-.small{
-  color:var(--sub);
-  font-size:.92rem;
-}
-
-/* ---------- CONSENSUS ---------- */
-
-.consensus{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:1rem;
-}
-
-.consensus .card{
-  display:grid;
-  grid-template-columns:48px 1fr;
-  gap:.8rem;
-}
-
-.mini{
-  width:44px;
-  height:44px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:50%;
-  color:white;
-  background:var(--navy);
-
-  font-weight:bold;
-}
-
-/* ---------- PYRAMID ---------- */
-
-.layers{
-  max-width:780px;
-  margin:1.8rem auto;
-}
-
-.layer{
-  margin:.5rem auto;
-  padding:.8rem 1rem;
-
-  text-align:center;
-  font-weight:bold;
-
-  background:white;
-  border:1px solid var(--line);
-  border-radius:9px;
-}
-
-.layer:nth-child(1){
-  width:54%;
-  background:#eaf6ef;
-}
-
-.layer:nth-child(2){
-  width:68%;
-  background:#edf5f9;
-}
-
-.layer:nth-child(3){
-  width:82%;
-  background:#fff5df;
-}
-
-.layer:nth-child(4){
-  width:96%;
-}
-
-/* ---------- DETAILS ---------- */
-
-details{
-  margin:.8rem 0;
-  padding:.9rem 1rem;
-
-  background:white;
-  border:1px solid var(--line);
-  border-radius:10px;
-}
-
-summary{
-  cursor:pointer;
-  font-weight:bold;
-}
-
-/* ---------- CHECK ---------- */
-
-.check{
-  columns:2;
-  column-gap:2rem;
-}
-
-.check li{
-  break-inside:avoid;
-  margin-bottom:.6rem;
-}
-
-/* ---------- TEMPLATE ---------- */
-
-.template{
-  padding:1.3rem;
-
-  background:white;
-  border:2px solid #9fb5c2;
-  border-radius:14px;
-}
-
-.template dl{
-  display:grid;
-  grid-template-columns:13rem 1fr;
-  gap:.4rem 1rem;
-}
-
-.template dt{
-  font-weight:bold;
-  color:#203d51;
-}
-
-.template dd{
-  margin:0;
-}
-
-/* ---------- FOOT ---------- */
-
-footer{
-  color:#eaf1f4;
-  background:#142a39;
-}
-
-.footer-inner{
-  max-width:var(--max);
-  margin:auto;
-  padding:2rem 1.5rem;
-}
-
-/* ---------- RESPONSIVE ---------- */
-
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Meiryo,"BIZ UDPGothic","Yu Gothic",YuGothic,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:18px;line-height:1.85;letter-spacing:.01em;
+}
+a{color:#075e9b;text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:3px}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+.skip{position:absolute;left:1rem;top:-6rem;background:#111;color:#fff;padding:.7rem 1rem;z-index:99;border-radius:.4rem}
+.skip:focus{top:1rem}
+header{background:linear-gradient(135deg,#153d5a 0%,#225b72 100%);color:#fff}
+.hero{max-width:var(--max);margin:auto;padding:3.4rem 1.4rem 2.8rem;display:grid;grid-template-columns:1.6fr .8fr;gap:2rem;align-items:center}
+.eyebrow{font-size:.88rem;font-weight:700;letter-spacing:.09em;opacity:.9}
+h1{font-size:clamp(2.05rem,4.6vw,3.6rem);line-height:1.22;margin:.35rem 0 1rem}
+.lead{font-size:1.12rem;max-width:60rem;margin:0}
+.hero-graphic{display:flex;justify-content:center}
+.hero-graphic svg{width:min(290px,100%);height:auto}
+.hero-note{grid-column:1/-1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:1rem 1.15rem}
+nav{background:#fff;border-bottom:1px solid var(--line)}
+.navin{max-width:var(--max);margin:auto;padding:.85rem 1.4rem}
+.navin ul{display:flex;flex-wrap:wrap;gap:.3rem 1rem;margin:.25rem 0;padding-left:1.2rem}
+.navin a{font-weight:700}
+main{max-width:var(--max);margin:auto;padding:2.2rem 1.4rem 4rem}
+section{margin-bottom:3.6rem;scroll-margin-top:1rem}
+h2{font-size:1.78rem;line-height:1.45;color:var(--navy);border-bottom:3px solid #b4c8d3;padding-bottom:.45rem;margin-top:0}
+h3{font-size:1.28rem;line-height:1.5;color:#203d51;margin-top:1.8rem}
+h4{font-size:1.08rem}
+p{max-width:78ch}
+.icon-grid,.ai-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow)}
+.card h3{margin:.25rem 0 .55rem}
+.card p:last-child{margin-bottom:0}
+.iconbox{width:58px;height:58px;border-radius:14px;display:grid;place-items:center;background:var(--surface2);border:1px solid #cad5db}
+.iconbox svg{width:34px;height:34px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tag{display:inline-block;font-size:.82rem;font-weight:700;padding:.18rem .55rem;border-radius:999px;background:#edf2f4;border:1px solid #c8d2d8;color:#314653}
+.callout{padding:1rem 1.2rem;border-radius:12px;border-left:6px solid var(--blue);background:var(--bluebg);margin:1.2rem 0}
+.callout.warn{background:var(--amberbg);border-left-color:var(--amber)}
+.callout.good{background:var(--greenbg);border-left-color:var(--teal)}
+.story{display:grid;grid-template-columns:repeat(5,1fr);gap:.55rem;align-items:stretch;margin:1.3rem 0}
+.step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.9rem;text-align:center;font-weight:700;position:relative}
+.step .num{display:block;width:2rem;height:2rem;line-height:2rem;border-radius:50%;background:var(--navy);color:#fff;margin:0 auto .45rem}
+.step small{display:block;font-weight:400;color:var(--muted);line-height:1.55;margin-top:.4rem}
+.compare-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff}
+table{border-collapse:collapse;width:100%;min-width:980px}
+caption{text-align:left;font-weight:700;padding:1rem;background:#e9f0f4}
+th,td{border:1px solid var(--line);padding:.8rem .85rem;vertical-align:top;text-align:left}
+thead th{background:var(--navy);color:#fff}
+tbody th{background:#eef3f5;color:#17374c;width:17%}
+tbody tr:nth-child(even) td{background:#fbfcfc}
+.ai-card{border-top:6px solid var(--blue)}
+.ai-card:nth-child(2){border-top-color:var(--teal)}
+.ai-card:nth-child(3){border-top-color:var(--amber)}
+.ai-card:nth-child(4){border-top-color:#6b4d8c}
+.ai-title{display:flex;align-items:center;gap:.7rem}
+.ai-mark{width:2.6rem;height:2.6rem;border-radius:50%;display:grid;place-items:center;background:#edf3f6;border:1px solid #cad5db;font-weight:800;color:var(--navy)}
+.axis{display:grid;grid-template-columns:190px 1fr;gap:1rem;margin:1rem 0}
+.axis-label{font-weight:700;color:#203d51}
+.meter{height:14px;background:#e5eaed;border-radius:999px;overflow:hidden;margin-top:.45rem}
+.meter span{display:block;height:100%;background:#486f87;border-radius:999px}
+.consensus{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.consensus .card{display:grid;grid-template-columns:46px 1fr;gap:.8rem}
+.consensus .mini{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#eef5f7;font-weight:800;color:var(--navy)}
+.pyramid{max-width:760px;margin:1.5rem auto}
+.layer{margin:.45rem auto;text-align:center;padding:.75rem 1rem;border:1px solid var(--line);background:#fff;border-radius:9px;font-weight:700}
+.layer:nth-child(1){width:52%;background:#e9f5ef}
+.layer:nth-child(2){width:66%;background:#edf4f8}
+.layer:nth-child(3){width:80%;background:#f6f1e8}
+.layer:nth-child(4){width:94%;background:#f1f3f4}
+.checklist{columns:2;column-gap:2rem;padding-left:1.3rem}
+.checklist li{break-inside:avoid;margin-bottom:.55rem}
+.template{background:#fff;border:2px solid #9eb4c2;border-radius:14px;padding:1.25rem}
+.template dl{display:grid;grid-template-columns:12rem 1fr;gap:.45rem 1rem}
+.template dt{font-weight:700;color:#203d51}
+.template dd{margin:0}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:.85rem 1rem;margin:.8rem 0}
+summary{font-weight:700;cursor:pointer}
+.small{font-size:.91rem;color:var(--muted)}
+.source-list li{margin-bottom:.6rem}
+footer{background:#142a39;color:#e8f0f4}
+.footerin{max-width:var(--max);margin:auto;padding:2rem 1.4rem}
+footer a{color:#fff}
 @media(max-width:900px){
-
-  .hero{
-    grid-template-columns:1fr;
-  }
-
-  .hero-graphic{
-    order:-1;
-    text-align:left;
-  }
-
-  .hero-graphic svg{
-    max-width:210px;
-  }
-
-  .four{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .story{
-    grid-template-columns:1fr 1fr;
-  }
+ .hero{grid-template-columns:1fr}.hero-graphic{order:-1;justify-content:flex-start}.hero-graphic svg{width:210px}
+ .icon-grid,.ai-grid{grid-template-columns:repeat(2,1fr)} .story{grid-template-columns:1fr 1fr}
 }
-
 @media(max-width:650px){
-
-  body{
-    font-size:17px;
-  }
-
-  .four,
-  .ai-grid,
-  .consensus,
-  .story{
-    grid-template-columns:1fr;
-  }
-
-  .check{
-    columns:1;
-  }
-
-  .template dl{
-    grid-template-columns:1fr;
-  }
-
-  .template dd{
-    margin-bottom:.7rem;
-  }
+ body{font-size:17px}.icon-grid,.ai-grid,.consensus{grid-template-columns:1fr}.story{grid-template-columns:1fr}
+ .axis{grid-template-columns:1fr}.checklist{columns:1}.template dl{grid-template-columns:1fr;gap:0}.template dd{margin:0 0 .8rem}
+ main{padding-left:1rem;padding-right:1rem}
+ h2{font-size:1.5rem}
+ .compare-wrap{overflow:visible;border:0;background:transparent}
+ .compare-wrap table,.compare-wrap tbody,.compare-wrap tr,.compare-wrap th,.compare-wrap td{display:block;width:100%;min-width:0}
+ .compare-wrap table{border-collapse:separate;border-spacing:0}
+ .compare-wrap caption{display:block;border:1px solid var(--line);border-radius:12px;padding:.85rem 1rem;margin-bottom:.85rem}
+ .compare-wrap thead{
+   position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;
+   overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important
+ }
+ .compare-wrap tbody tr{
+   background:#fff;border:1px solid var(--line);border-radius:14px;
+   box-shadow:var(--shadow);margin:0 0 1rem;overflow:hidden
+ }
+ .compare-wrap tbody th{
+   background:var(--navy);color:#fff;border:0;padding:.85rem 1rem;
+   font-size:1.08rem;line-height:1.55
+ }
+ .compare-wrap tbody td{
+   border:0;border-top:1px solid #d8e0e4;padding:.8rem 1rem .9rem;
+   background:#fff!important;line-height:1.7
+ }
+ .compare-wrap tbody td::before{
+   content:attr(data-label);display:block;margin-bottom:.18rem;
+   color:var(--blue);font-size:.82rem;line-height:1.4;font-weight:800;letter-spacing:.04em
+ }
 }
-
-@media(prefers-reduced-motion:reduce){
-
-  html{
-    scroll-behavior:auto;
-  }
-}
-
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 @media print{
-
-  body{
-    color:black;
-    background:white;
-    font-size:11pt;
-  }
-
-  header{
-    color:black;
-    background:white;
-    border-bottom:2px solid black;
-  }
-
-  nav,
-  .hero-graphic{
-    display:none;
-  }
-
-  main{
-    max-width:none;
-  }
+ body{background:#fff;color:#000;font-size:11pt;line-height:1.55}.hero{display:block;padding:1rem 0}.hero-graphic,nav,.skip{display:none}
+ header{background:#fff!important;color:#000;border-bottom:2px solid #000}main{max-width:none;padding:0}.card{box-shadow:none}
+ a{color:#000;text-decoration:none}
 }
 </style>
 </head>
-
 <body>
-
-<a class="skip" href="#main">
-本文へスキップ
-</a>
-
+<a class="skip" href="#main">本文へスキップ</a>
 
 <header>
-
 <div class="hero">
-
-<div>
-
-<div class="kicker">
-共有・対話のための統合資料
+  <div>
+    <div class="eyebrow">共有・対話のための統合資料</div>
+    <h1>交通・地理アクセシビリティ<br>生成AI4者の視点比較</h1>
+    <p class="lead">Gemini、ChatGPT、Claude、Copilotの提案と、障がい当事者・参加者等から共有された実体験を重ね合わせ、イベントへの「たどり着きやすさ」を考えるための資料です。</p>
+  </div>
+  <div class="hero-graphic" aria-hidden="true">
+    <svg viewBox="0 0 320 260" role="img">
+      <circle cx="160" cy="130" r="102" fill="none" stroke="#dcebf2" stroke-width="2"/>
+      <circle cx="160" cy="130" r="62" fill="#fff" opacity=".14"/>
+      <path d="M160 48v164M78 130h164" stroke="#dcebf2" stroke-width="2" stroke-dasharray="5 7"/>
+      <circle cx="160" cy="130" r="22" fill="#fff"/>
+      <path d="M160 116c-8 0-14 6-14 14 0 11 14 25 14 25s14-14 14-25c0-8-6-14-14-14z" fill="#173f5f"/>
+      <circle cx="160" cy="130" r="5" fill="#fff"/>
+      <g fill="#fff">
+        <circle cx="160" cy="48" r="10"/><circle cx="242" cy="130" r="10"/><circle cx="160" cy="212" r="10"/><circle cx="78" cy="130" r="10"/>
+      </g>
+      <g font-family="Meiryo, sans-serif" font-size="16" font-weight="700" fill="#fff">
+        <text x="160" y="24" text-anchor="middle">交通</text>
+        <text x="276" y="136" text-anchor="middle">地理</text>
+        <text x="160" y="246" text-anchor="middle">情報</text>
+        <text x="42" y="136" text-anchor="middle">支援</text>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-note"><strong>このページの目的：</strong>「どのAIが正しいか」を決めることではありません。各資料から読み取れる重視点や設計思想を比較し、当事者の経験を中心に、主催者・サポートメンバー・参加者が一緒に改善策を話し合うための土台をつくります。</div>
 </div>
-
-<h1>
-交通・地理アクセシビリティ<br>
-生成AI4者の視点比較
-</h1>
-
-<p class="lead">
-Gemini、ChatGPT、Claude、Copilotの提案と、
-障がい当事者・参加者等から共有された実体験を重ね合わせ、
-イベントへの「たどり着きやすさ」を考えるための資料です。
-</p>
-
-</div>
-
-
-<div class="hero-graphic" aria-hidden="true">
-
-<svg viewBox="0 0 320 260">
-
-<circle
-  cx="160"
-  cy="130"
-  r="102"
-  fill="none"
-  stroke="#dcebf2"
-  stroke-width="2"/>
-
-<circle
-  cx="160"
-  cy="130"
-  r="62"
-  fill="#ffffff"
-  opacity=".12"/>
-
-<path
-  d="M160 48v164 M78 130h164"
-  stroke="#dcebf2"
-  stroke-width="2"
-  stroke-dasharray="5 7"/>
-
-<circle cx="160" cy="130" r="23" fill="#ffffff"/>
-
-<path
-  d="M160 115
-     c-8 0-14 6-14 14
-     c0 11 14 26 14 26
-     s14-15 14-26
-     c0-8-6-14-14-14z"
-  fill="#173f5f"/>
-
-<circle
-  cx="160"
-  cy="129"
-  r="5"
-  fill="#ffffff"/>
-
-<g fill="#ffffff">
-
-<circle cx="160" cy="48" r="10"/>
-<circle cx="242" cy="130" r="10"/>
-<circle cx="160" cy="212" r="10"/>
-<circle cx="78" cy="130" r="10"/>
-
-</g>
-
-<g
-  font-family="Meiryo, sans-serif"
-  font-size="16"
-  font-weight="bold"
-  fill="#ffffff">
-
-<text x="160" y="23" text-anchor="middle">
-交通
-</text>
-
-<text x="279" y="136" text-anchor="middle">
-地理
-</text>
-
-<text x="160" y="247" text-anchor="middle">
-情報
-</text>
-
-<text x="41" y="136" text-anchor="middle">
-支援
-</text>
-
-</g>
-
-</svg>
-
-</div>
-
-
-<div class="hero-note">
-
-<strong>このページの目的：</strong>
-
-「どのAIが一番正しいか」を決めることではありません。
-
-各資料から読み取れる重視点や設計思想を比較し、
-当事者の経験を中心に、
-主催者・サポートメンバー・参加者が一緒に改善策を話し合うための
-土台をつくります。
-
-</div>
-
-</div>
-
 </header>
 
-
-<nav aria-label="ページ内目次">
-
-<div class="nav-inner">
-
+<nav aria-label="ページ内目次"><div class="navin">
 <strong>目次</strong>
-
 <ul>
-
-<li><a href="#overview">全体像</a></li>
-
-<li><a href="#case">当事者の経験</a></li>
-
-<li><a href="#compare">4AI比較</a></li>
-
-<li><a href="#focus">AIごとの着眼点</a></li>
-
-<li><a href="#common">共通合意</a></li>
-
-<li><a href="#discussion">違いと論点</a></li>
-
-<li><a href="#integrated">統合案</a></li>
-
-<li><a href="#checklist">チェックリスト</a></li>
-
-<li><a href="#template">案内ひな形</a></li>
-
-</ul>
-
-</div>
-
-</nav>
-
+<li><a href="#overview">全体像</a></li><li><a href="#case">当事者の経験</a></li><li><a href="#compare">4AI比較</a></li>
+<li><a href="#focus">AIごとの着眼点</a></li><li><a href="#common">共通合意</a></li><li><a href="#differences">違いと論点</a></li>
+<li><a href="#integrated">統合案</a></li><li><a href="#check">チェックリスト</a></li><li><a href="#template">案内ひな形</a></li><li><a href="#sources">資料について</a></li>
+</ul></div></nav>
 
 <main id="main">
-
-
 <section id="overview">
+<h2>1. 全体像 ― 「移動できる」だけでは、参加できるとは限らない</h2>
+<p>4つの生成AIの改訂版を並べると、交通アクセシビリティを「駅や道路を物理的に移動できるか」だけで捉えず、<strong>正しい目的地を識別できること、必要な情報を使えること、困ったときに立て直せること</strong>まで含めて考える方向へ収束しています。</p>
 
-<h2>
-1. 「移動できる」だけでは、参加できるとは限らない
-</h2>
-
-<p>
-4つの生成AIの改訂版を並べてみると、
-交通アクセシビリティを単なる
-「駅や道路を物理的に移動できるか」
-という問題だけでは捉えていません。
-</p>
-
-<p>
-<strong>
-正しい目的地を識別できること、
-必要な情報を利用できること、
-予想外のことが起きたときに立て直せること
-</strong>
-まで含めて考える方向に、
-4者の提案は収束しています。
-</p>
-
-
-<div class="four">
-
-
-<article class="card">
-
-<div class="icon" aria-hidden="true">
-
-<svg viewBox="0 0 36 36">
-
-<rect
-  x="7"
-  y="5"
-  width="22"
-  height="23"
-  rx="5"/>
-
-<path d="M10 22h16"/>
-<path d="M12 28l-3 4"/>
-<path d="M24 28l3 4"/>
-<path d="M12 11h12"/>
-
-<circle cx="12" cy="24.5" r="1"/>
-<circle cx="24" cy="24.5" r="1"/>
-
-</svg>
-
+<div class="icon-grid">
+ <article class="card"><div class="iconbox" aria-hidden="true"><svg viewBox="0 0 36 36"><rect x="7" y="5" width="22" height="23" rx="5"/><path d="M10 22h16M12 28l-3 4M24 28l3 4M12 11h12"/><circle cx="12" cy="24.5" r="1"/><circle cx="24" cy="24.5" r="1"/></svg></div><h3>交通</h3><p>鉄道・バス・タクシー、駅構内、乗換え、歩道、横断歩道、エレベーターなどを利用できるか。</p></article>
+ <article class="card"><div class="iconbox" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M18 32s10-9 10-18A10 10 0 0 0 8 14c0 9 10 18 10 18z"/><circle cx="18" cy="14" r="3"/></svg></div><h3>地理</h3><p>似た名称、複数入口、建物・棟・階などを取り違えず、「ここだ」と目的地を識別できるか。</p></article>
+ <article class="card"><div class="iconbox" aria-hidden="true"><svg viewBox="0 0 36 36"><rect x="7" y="5" width="22" height="26" rx="2"/><path d="M11 12h14M11 17h14M11 22h9"/></svg></div><h3>情報</h3><p>スクリーンリーダーで読めるテキスト、正確な地図ピン、分かりやすい制度説明などがあるか。</p></article>
+ <article class="card"><div class="iconbox" aria-hidden="true"><svg viewBox="0 0 36 36"><path d="M18 30a12 12 0 1 0-12-12"/><path d="M6 10v8h8"/><path d="M18 11v8l5 3"/></svg></div><h3>リカバリー</h3><p>迷う、誤到着する、天候が悪化する、といった想定外が起きても参加へ戻れるか。</p></article>
 </div>
-
-<h3>交通</h3>
-
-<p>
-鉄道、バス、タクシー、駅構内、乗換え、
-エレベーター、歩道、横断歩道などを
-利用できるか。
-</p>
-
-</article>
-
-
-<article class="card">
-
-<div class="icon" aria-hidden="true">
-
-<svg viewBox="0 0 36 36">
-
-<path
-  d="M18 32
-     s10-9 10-18
-     A10 10 0 0 0 8 14
-     c0 9 10 18 10 18z"/>
-
-<circle cx="18" cy="14" r="3"/>
-
-</svg>
-
-</div>
-
-<h3>地理</h3>
-
-<p>
-似た名称、複数入口、建物、棟、階などを
-取り違えず、
-「ここが目的地だ」と識別できるか。
-</p>
-
-</article>
-
-
-<article class="card">
-
-<div class="icon" aria-hidden="true">
-
-<svg viewBox="0 0 36 36">
-
-<rect
-  x="7"
-  y="5"
-  width="22"
-  height="26"
-  rx="2"/>
-
-<path d="M11 12h14"/>
-<path d="M11 17h14"/>
-<path d="M11 22h9"/>
-
-</svg>
-
-</div>
-
-<h3>情報</h3>
-
-<p>
-スクリーンリーダーで読めるテキスト、
-正確な地図ピン、
-理解しやすい制度説明などを
-利用できるか。
-</p>
-
-</article>
-
-
-<article class="card">
-
-<div class="icon" aria-hidden="true">
-
-<svg viewBox="0 0 36 36">
-
-<path d="M18 30a12 12 0 1 0-12-12"/>
-<path d="M6 10v8h8"/>
-<path d="M18 11v8l5 3"/>
-
-</svg>
-
-</div>
-
-<h3>リカバリー</h3>
-
-<p>
-迷う、誤到着する、天候が悪化するなどの
-想定外が起きても、
-参加へ戻れる方法があるか。
-</p>
-
-</article>
-
-
-</div>
-
-
-<div class="callout green">
-
-<strong>
-4者を重ね合わせて見えてくる中心的な考え方
-</strong>
-
-<br>
-
-主催者がすべての参加者を介助することではなく、
-
-「自力で行く」
-
-「支援を頼む」
-
-「途中から助けを求める」
-
-という選択肢を参加者自身が持てるよう、
-情報と支援の仕組みを設計することです。
-
-</div>
-
+<div class="callout good"><strong>統合して見える中心的な考え方：</strong>主催者がすべてを介助することではなく、参加者が「自力で行く」「支援を頼む」「途中から助けを求める」を選べるよう、情報と選択肢を設計することです。</div>
 </section>
-
-
 
 <section id="case">
+<h2>2. 当事者の経験が示した「失敗の連鎖」</h2>
+<p>追加資料では、横浜のイベント参加時、正しい会場をナビに設定していたにもかかわらず、近隣のよく似た名称の別施設へ案内され、炎天下での長時間歩行も重なって参加を断念した経験が共有されました。重要なのは、単純な「道迷い」ではなく、複数の条件が連鎖していた点です。</p>
 
-<h2>
-2. 当事者の経験から見えた「失敗の連鎖」
-</h2>
-
-<p>
-追加されたオープンチャットの記録では、
-横浜のイベント参加時、
-視覚障害のある参加者が正しい会場を
-ナビアプリに設定していたにもかかわらず、
-近隣にある非常によく似た名称の別施設へ
-案内されてしまった経験が共有されました。
-</p>
-
-
-<div class="story">
-
-
-<div class="step">
-
-<span class="number">1</span>
-
-正しい目的地を設定
-
-<small>
-視覚障害者向けナビには
-正しい場所を設定していた。
-</small>
-
+<div class="story" aria-label="事例で起きたことの流れ">
+ <div class="step"><span class="num">1</span>正しい目的地を設定<small>視覚障害者向けナビには正しい場所を設定していた。</small></div>
+ <div class="step"><span class="num">2</span>第三者が声かけ<small>会場名と住所を示して案内を依頼。</small></div>
+ <div class="step"><span class="num">3</span>類似施設へ誘導<small>案内者も近隣に似た名称の施設があると知らなかった。</small></div>
+ <div class="step"><span class="num">4</span>違和感を再解釈<small>自分の入力ミスかもしれないと考え、案内を継続。</small></div>
+ <div class="step"><span class="num">5</span>暑さで断念<small>約30分の屋外歩行後、戻る余力を失った。</small></div>
 </div>
 
+<div class="callout warn"><strong>当事者の声から浮かぶポイント：</strong>「もっと本人が調べればよかった」という個人の注意だけでは防ぎきれません。似た施設の存在、ランドマーク、正確な位置ピンなどが事前に共有されていれば、本人だけでなく、善意で案内する第三者も確認しやすくなります。</div>
 
-<div class="step">
-
-<span class="number">2</span>
-
-第三者から声かけ
-
-<small>
-正式名称と住所を見せて
-案内をお願いした。
-</small>
-
-</div>
-
-
-<div class="step">
-
-<span class="number">3</span>
-
-類似施設へ誘導
-
-<small>
-案内者も近隣に似た施設があることを
-知らなかった。
-</small>
-
-</div>
-
-
-<div class="step">
-
-<span class="number">4</span>
-
-違和感を再解釈
-
-<small>
-「自分が入力を間違えたのかも」
-と考え、案内を続けてもらった。
-</small>
-
-</div>
-
-
-<div class="step">
-
-<span class="number">5</span>
-
-暑さで参加断念
-
-<small>
-炎天下で約30分歩き、
-正しい会場へ戻る余力を失った。
-</small>
-
-</div>
-
-
-</div>
-
-
-<div class="callout amber">
-
-<strong>
-ここで重要なのは、
-単純な「本人の道迷い」ではなかったという点です。
-</strong>
-
-<br>
-
-本人は事前準備をしていました。
-
-声をかけた第三者も善意で案内しました。
-
-それでも、
-「似た施設が近くに存在する」
-という情報が共有されていなかったことで、
-複数の小さな誤認が連鎖しました。
-
-</div>
-
-
-<h3>
-この経験から追加された重要な視点
-</h3>
-
+<h3>経験から追加された重要な論点</h3>
 <ul>
-
-<li>
-<strong>類似名称施設の存在そのものが重要なアクセス情報</strong>
-である。
-</li>
-
-<li>
-地図を視覚的に一覧できない場合、
-検索結果の下にある似た候補へ気づきにくいことがある。
-</li>
-
-<li>
-ランドマークは本人の視覚的な目印だけではなく、
-<strong>周囲の人に尋ねるための共通言語</strong>
-にもなる。
-</li>
-
-<li>
-「迎えが必要なら申し出てください」
-だけではなく、
-申出があったときには
-<strong>具体的に確認して返信する</strong>
-必要がある。
-</li>
-
-<li>
-「障害があるなら最初から助けを頼めばよい」
-という単純な考え方では、
-<strong>自分で行けることは自分でしたい</strong>
-という当事者の感覚を捉えきれない。
-</li>
-
-<li>
-猛暑や悪天候は、
-通常なら修正可能な小さな道迷いを
-「参加断念」へ拡大させることがある。
-</li>
-
+<li><strong>類似名称施設の存在そのものがリスク情報</strong>である。</li>
+<li>地図を視覚的に一覧できない場合、検索候補の「下にある別候補」に気づきにくいことがある。</li>
+<li>ランドマークは本人の視覚的目印だけではなく、<strong>周囲の人に尋ねるための共通言語</strong>にもなる。</li>
+<li>「迎えが必要なら申し出てください」だけでは足りず、申出に対して<strong>返信し、具体的にすり合わせる</strong>必要がある。</li>
+<li>自力で行きたい人にとって、支援の存在は「常に介助を受ける」という意味ではなく、<strong>必要な時だけ使える安全網</strong>である。</li>
+<li>猛暑などの環境条件は、通常ならリカバリー可能な小さな迷いを「参加断念」へ拡大させる。</li>
 </ul>
-
 </section>
-
-
 
 <section id="compare">
+<h2>3. Gemini・ChatGPT・Claude・Copilot 比較</h2>
+<p>以下は各資料の文章から読み取れる「重視点」の比較です。AIに感情や固有の意思があるという意味ではなく、<strong>それぞれの回答がどのような問題設定を採り、どこに実務上の重点を置いたか</strong>を整理しています。</p>
 
-<h2>
-3. Gemini・ChatGPT・Claude・Copilotを比較する
-</h2>
-
-<p>
-以下では、
-AIに人格や感情があるという意味で
-「思い」を推測するのではなく、
-
-<strong>
-それぞれの回答文から読み取れる
-問題設定・重視点・設計思想
-</strong>
-
-として比較します。
-</p>
-
-
-<div class="table-wrap">
-
+<div class="compare-wrap">
 <table>
-
-<caption>
-4つの生成AIが特に重視している点
-</caption>
-
-
-<thead>
-
-<tr>
-
-<th>観点</th>
-
-<th>Gemini</th>
-
-<th>ChatGPT</th>
-
-<th>Claude</th>
-
-<th>Copilot</th>
-
-</tr>
-
-</thead>
-
-
+<caption>4つの生成AIの提案を、重視する観点ごとに比較</caption>
+<thead><tr><th scope="col">観点</th><th scope="col">Gemini</th><th scope="col">ChatGPT</th><th scope="col">Claude</th><th scope="col">Copilot</th></tr></thead>
 <tbody>
-
-
-<tr>
-
-<th>全体的な特徴</th>
-
-<td>
-事前調査と案内文を
-具体的な移動場面に落とし込む。
-</td>
-
-<td>
-情報、選択肢、役割分担、
-当日のリカバリーまで
-一つの仕組みとして整理する。
-</td>
-
-<td>
-限られた人員でも実行できる
-優先順位を明確にする。
-</td>
-
-<td>
-支援を段階化し、
-イベント規模や本人の希望に応じて
-選べるようにする。
-</td>
-
-</tr>
-
-
-<tr>
-
-<th>強く出ている視点</th>
-
-<td>
-改札、点字ブロック、
-音響信号、入口など
-具体的なナビゲーション情報。
-</td>
-
-<td>
-「本人の自己責任」
-対
-「主催者の全面介助」
-という二択を避ける。
-</td>
-
-<td>
-駅係員など既存の公式サービスを
-人的支援資源として活用する。
-</td>
-
-<td>
-支援を押し付けず、
-本人との対話で必要な支援を決める。
-</td>
-
-</tr>
-
-
-<tr>
-
-<th>地理アクセシビリティ</th>
-
-<td>
-類似施設、
-ランドマーク、
-正確な位置URLを
-案内情報へ組み込む。
-</td>
-
-<td>
-正式名称、
-住所、
-ビル、
-階、
-位置ピン、
-類似施設を
-「識別情報のセット」として扱う。
-</td>
-
-<td>
-類似名称施設への注意喚起を
-最優先事項へ引き上げる。
-</td>
-
-<td>
-類似施設、
-入口写真、
-複数入口の明示を追加。
-</td>
-
-</tr>
-
-
-<tr>
-
-<th>情報アクセシビリティ</th>
-
-<td>
-スクリーンリーダーを想定し、
-テキストを中心にする。
-</td>
-
-<td>
-文字情報、
-地図URL、
-写真の役割を分ける。
-</td>
-
-<td>
-正確な地図ピンを
-ナビへ直接読み込めることを重視。
-</td>
-
-<td>
-「複雑だから使えないと思い込む」
-という情報のバリアにも言及。
-</td>
-
-</tr>
-
-
-<tr>
-
-<th>人的支援</th>
-
-<td>
-予約制の駅前迎え、
-会場受付・警備との連携。
-</td>
-
-<td>
-人員や天候に合わせ、
-迎え、電話、会場、地域協力者を
-組み合わせる。
-</td>
-
-<td>
-駅係員の誘導サービスを
-最優先の選択肢として提示。
-</td>
-
-<td>
-情報提供から誘導員配置までを
-5段階に整理。
-</td>
-
-</tr>
-
-
-<tr>
-
-<th>特徴的な提案</th>
-
-<td>
-具体的な文字道案内と
-「他人に見せるための情報」。
-</td>
-
-<td>
-「目的地確認カード」と
-誤到着後のリカバリー設計。
-</td>
-
-<td>
-最優先・高・中の
-優先順位づけ。
-</td>
-
-<td>
-支援レベル1〜5による
-段階的な考え方。
-</td>
-
-</tr>
-
-
+<tr><th scope="row">中心的な特徴</th><td data-label="Gemini">具体的な事前調査と案内文の作り方を細かく提示</td><td data-label="ChatGPT">情報・選択肢・役割分担・リカバリーを一つの運用設計として統合</td><td data-label="Claude">限られた人員でも実行できる優先順位を明確化</td><td data-label="Copilot">支援レベルを段階化し、必要な人が選べる構造を提示</td></tr>
+<tr><th scope="row">最も目立つ着眼点</th><td data-label="Gemini">改札、点字ブロック、音響信号、入口など具体的な経路情報</td><td data-label="ChatGPT">「自己責任 vs 全面介助」の二択を避ける仕組みづくり</td><td data-label="Claude">駅係員など既存の公式サービスを現実的な代替資源として使う</td><td data-label="Copilot">支援の押し付けを避け、本人との対話で必要な支援を決める</td></tr>
+<tr><th scope="row">地理アクセシビリティ</th><td data-label="Gemini">類似施設、ランドマーク、正確な地図ピンを案内情報へ組み込む</td><td data-label="ChatGPT">正式名称・住所・ビル・階・ピン・類似施設を「識別セット」として扱う</td><td data-label="Claude">類似名称施設の注意喚起を最優先事項へ引き上げる</td><td data-label="Copilot">類似施設、入口写真、複数入口の明示を追加</td></tr>
+<tr><th scope="row">情報アクセシビリティ</th><td data-label="Gemini">スクリーンリーダー前提でテキストを主とし、地図や写真だけに依存しない</td><td data-label="ChatGPT">テキスト、地図URL、写真の役割を分け、確認日や情報の限界も示す</td><td data-label="Claude">正確なピンを直接ナビへ読み込めることを重視</td><td data-label="Copilot">「複雑で使えないと思い込む」情報バリアにも言及</td></tr>
+<tr><th scope="row">人的支援</th><td data-label="Gemini">予約制の駅前お迎えや会場受付・警備との連携</td><td data-label="ChatGPT">人員数や気候に応じて、迎え・電話・地域協力者などを組み合わせる</td><td data-label="Claude">駅係員の誘導サービスを最優先し、主催者人員の不足を補う</td><td data-label="Copilot">詳細情報→個別相談→駅待合せ→誘導員配置の5段階</td></tr>
+<tr><th scope="row">当事者との関係</th><td data-label="Gemini">事前ヒアリングと希望確認</td><td data-label="ChatGPT">障害名より「困る場面・希望する配慮」を聞き、申出に必ず返信する</td><td data-label="Claude">視覚障害の程度や白杖・盲導犬等を確認し個別調整</td><td data-label="Copilot">一方向の回答ではなく確認の対話を行うことを明記</td></tr>
+<tr><th scope="row">特徴的な提案</th><td data-label="Gemini">定量的なテキスト道案内、「見せる用テキスト」</td><td data-label="ChatGPT">第三者に見せる「目的地確認カード」、誤到着時のリカバリー設計</td><td data-label="Claude">「優先度」で整理し、低コストな情報設計を重視</td><td data-label="Copilot">支援レベルを段階化し、主催者が無理なく選択できる形に整理</td></tr>
 </tbody>
-
 </table>
-
 </div>
-
 </section>
-
-
 
 <section id="focus">
-
-<h2>
-4. それぞれのAIは何を問題の中心に置いたのか
-</h2>
-
-
+<h2>4. AIごとの「設計思想」をもう少し読む</h2>
 <div class="ai-grid">
-
-
-<article class="card ai">
-
-<div class="ai-head">
-
-<div class="ai-mark">
-G
-</div>
-
-<h3>
-Gemini
-</h3>
-
-</div>
-
-<span class="tag">
-具体的なナビゲーション
-</span>
-
-<p>
-Geminiは、
-駅構内、改札、点字ブロック、
-音響信号、歩道、入口、館内導線など、
-<strong>
-参加者が一歩ずつ移動する場面
-</strong>
-を細かく分解しています。
-</p>
-
-<p>
-追加資料を受け、
-類似施設、ランドマーク、
-正確な地図ピンも
-案内情報の中へ組み込みました。
-</p>
-
-<p class="small">
-
-<strong>
-文章から読み取れる背景：
-</strong>
-
-「徒歩5分」のような抽象的な説明を、
-具体的で読み上げ可能な情報へ変換することで、
-本人にも、
-案内を頼まれた第三者にも
-役立つようにする考え方です。
-
-</p>
-
+<article class="card ai-card">
+ <div class="ai-title"><div class="ai-mark">G</div><h3>Gemini</h3></div>
+ <span class="tag">具体的なナビゲーション情報</span>
+ <p>駅構内、改札、点字ブロック、音響信号、歩道、入口、館内導線など、<strong>参加者が実際に一歩ずつ移動する場面</strong>を細かく分解しています。</p>
+ <p>追加資料を受けて、類似施設・ランドマーク・正確な位置URLを「情報アクセシビリティ」の問題として案内文へ取り込んでいます。</p>
+ <p class="small"><strong>背景に見える考え方：</strong>不確実な「徒歩○分」ではなく、具体的で読み上げ可能な情報へ変換すれば、本人にも第三者にも使える案内になる。</p>
 </article>
 
-
-
-<article class="card ai gpt">
-
-<div class="ai-head">
-
-<div class="ai-mark">
-C
-</div>
-
-<h3>
-ChatGPT
-</h3>
-
-</div>
-
-<span class="tag">
-仕組みとリカバリー
-</span>
-
-<p>
-ChatGPTは、
-移動、目的地識別、情報提供、
-支援、当日対応を
-<strong>
-一つの運用システム
-</strong>
-として整理しています。
-</p>
-
-<p>
-特に、
-「本人の自己責任」
-または
-「主催者が全面介助」
-という二択を避け、
-複数の関係者が役割を分担する考えが
-強く出ています。
-</p>
-
-<p class="small">
-
-<strong>
-文章から読み取れる背景：
-</strong>
-
-迷いそのものを完全になくすより、
-何か起きても参加へ戻れる
-「リカバリー可能性」を
-設計しようとしています。
-
-</p>
-
+<article class="card ai-card">
+ <div class="ai-title"><div class="ai-mark">C</div><h3>ChatGPT</h3></div>
+ <span class="tag">仕組み・役割・リカバリー</span>
+ <p>移動、目的地識別、情報提供、支援、当日対応を<strong>一連の運用システム</strong>として整理しています。</p>
+ <p>特に「本人の自己責任」と「主催者の全面介助」の二択を避け、交通事業者・会場・主催者・サポートメンバー・本人が役割を分担する考えが強く出ています。</p>
+ <p class="small"><strong>背景に見える考え方：</strong>完全に迷いをゼロにするより、想定外が起きても参加へ戻れる「リカバリー可能性」を設計する。</p>
 </article>
 
-
-
-<article class="card ai claude">
-
-<div class="ai-head">
-
-<div class="ai-mark">
-Cl
-</div>
-
-<h3>
-Claude
-</h3>
-
-</div>
-
-<span class="tag">
-優先順位と実現可能性
-</span>
-
-<p>
-Claudeは、
-主催者が遠方にいる、
-人員配置が難しいという条件を
-強く意識しています。
-</p>
-
-<p>
-そのため、
-何から実施すべきかを
-「最優先」「高」「中」
-に分けています。
-</p>
-
-<p>
-駅係員の誘導サービスを
-主催者とは別の
-<strong>
-既存の公的・公式な人的支援
-</strong>
-として活用しようとしている点が
-特徴的です。
-</p>
-
-<p class="small">
-
-<strong>
-文章から読み取れる背景：
-</strong>
-
-理想的だが実施できない対策より、
-限られたリソースでも
-繰り返し実施できる対策を
-優先する考え方です。
-
-</p>
-
+<article class="card ai-card">
+ <div class="ai-title"><div class="ai-mark">Cl</div><h3>Claude</h3></div>
+ <span class="tag">優先順位と現実性</span>
+ <p>「主催者が遠方」「人員配置が難しい」という制約を強く意識し、何から実施すべきかを<strong>最優先・高・中</strong>に分けています。</p>
+ <p>駅係員の誘導サービスを公式な人的支援として最優先に置き、主催者のリソース不足を既存サービスで補う考えが特徴的です。</p>
+ <p class="small"><strong>背景に見える考え方：</strong>理想的な全面支援より、低コストでも再現しやすく、実際に実施できる対策を先に置く。</p>
 </article>
 
-
-
-<article class="card ai copilot">
-
-<div class="ai-head">
-
-<div class="ai-mark">
-Co
-</div>
-
-<h3>
-Copilot
-</h3>
-
-</div>
-
-<span class="tag">
-選択できる支援
-</span>
-
-<p>
-Copilotは、
-詳細情報の提供から
-誘導員配置までを
-段階化しています。
-</p>
-
-<p>
-また、
-すべての参加者が支援を求めるわけではなく、
-自力で参加したい人もいることを
-明確にしています。
-</p>
-
-<p class="small">
-
-<strong>
-文章から読み取れる背景：
-</strong>
-
-アクセシビリティを
-「全員への一律の介助」
-としてではなく、
-<strong>
-必要な人が必要な支援を選べる仕組み
-</strong>
-として考えています。
-
-</p>
-
+<article class="card ai-card">
+ <div class="ai-title"><div class="ai-mark">Co</div><h3>Copilot</h3></div>
+ <span class="tag">選択可能な支援レベル</span>
+ <p>「詳細な情報提供」から「誘導員配置」までを5段階にし、イベント規模や人員に応じて選べるようにしています。</p>
+ <p>また、「支援を求める人ばかりではない」「自力参加を希望する人もいる」と明示し、<strong>支援を押し付けない</strong>ことを重視します。</p>
+ <p class="small"><strong>背景に見える考え方：</strong>アクセシビリティを一律の介助としてではなく、必要な人が必要な支援を選べる仕組みにする。</p>
 </article>
-
-
 </div>
-
 </section>
-
-
 
 <section id="common">
-
-<h2>
-5. 4者に共通していること
-</h2>
-
-
+<h2>5. 4者に共通する合意点</h2>
 <div class="consensus">
-
-
-<div class="card">
-
-<div class="mini">
-1
+ <div class="card"><div class="mini">1</div><div><h3>名称だけでは不足</h3><p>正式名称、住所、建物・棟・階・部屋、正確な位置を組み合わせる。</p></div></div>
+ <div class="card"><div class="mini">2</div><div><h3>似た施設を知らせる</h3><p>「近くに○○がありますが別会場です」という注意情報そのものに価値がある。</p></div></div>
+ <div class="card"><div class="mini">3</div><div><h3>地図画像だけにしない</h3><p>テキスト説明と地図URLを併用し、写真は補助情報として扱う。</p></div></div>
+ <div class="card"><div class="mini">4</div><div><h3>本人に希望を聞く</h3><p>障害名から支援内容を推測せず、具体的に何が必要かを確認する。</p></div></div>
+ <div class="card"><div class="mini">5</div><div><h3>当日の連絡先を持つ</h3><p>迷った際、入口が分からない際に使える連絡手段を準備する。</p></div></div>
+ <div class="card"><div class="mini">6</div><div><h3>人員には限界がある</h3><p>誘導員を常時配置できなくても、情報設計・予約制迎え・既存サービスで改善できる。</p></div></div>
 </div>
-
-<div>
-
-<h3>
-会場名だけでは足りない
-</h3>
-
-<p>
-正式名称、
-住所、
-建物、
-棟、
-階、
-部屋まで
-一つのまとまりとして示す。
-</p>
-
-</div>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="mini">
-2
-</div>
-
-<div>
-
-<h3>
-似た施設を知らせる
-</h3>
-
-<p>
-「近くに○○がありますが、
-今回の会場とは別です」
-という注意情報そのものに価値がある。
-</p>
-
-</div>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="mini">
-3
-</div>
-
-<div>
-
-<h3>
-地図画像だけにしない
-</h3>
-
-<p>
-テキスト説明と
-正確な地図URLを併用し、
-写真は補助として扱う。
-</p>
-
-</div>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="mini">
-4
-</div>
-
-<div>
-
-<h3>
-本人に希望を聞く
-</h3>
-
-<p>
-障害名から必要な支援を推測せず、
-何に困っていて、
-何を希望しているのかを確認する。
-</p>
-
-</div>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="mini">
-5
-</div>
-
-<div>
-
-<h3>
-当日の連絡手段を持つ
-</h3>
-
-<p>
-迷った、
-入口が分からない、
-別施設へ着いた、
-といった場合に連絡できるようにする。
-</p>
-
-</div>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="mini">
-6
-</div>
-
-<div>
-
-<h3>
-人員だけに頼らない
-</h3>
-
-<p>
-常時誘導員を配置できなくても、
-情報設計、
-予約制の迎え、
-駅係員、
-会場スタッフなどで改善できる。
-</p>
-
-</div>
-
-</div>
-
-
-</div>
-
 </section>
 
-
-
-<section id="discussion">
-
-<h2>
-6. 違いは「対立」ではなく、話し合うための論点
-</h2>
-
-
-<details open>
-
-<summary>
-論点1：
-駅から会場までの道順を、どこまで詳しく書くべきか
-</summary>
-
-<p>
-Geminiはかなり具体的な文字経路を重視します。
-一方、Claudeは、
-歩き方や利用する支援は人によって異なるため、
-詳細経路だけに力を入れるより
-駅係員等の人的支援を重視しています。
-</p>
-
-<p>
-両者を組み合わせるなら、
-<strong>
-詳細経路を唯一の正解にせず、
-選択できる補助情報として提供する
-</strong>
-という考え方ができます。
-</p>
-
+<section id="differences">
+<h2>6. 相違点は「対立」より、議論の入口</h2>
+<p>4者の違いは大きな矛盾というより、どの部分を先に設計するかという<strong>重心の違い</strong>です。ここは、実際のイベント運営で話し合う価値があります。</p>
+<details open><summary>論点A：どこまで詳しい経路説明を書くべきか</summary>
+<p>Geminiはかなり具体的な文字経路を重視し、Claudeは文字説明の効果には個人差があるため、公式の人的支援をより優先します。両方を合わせると、「詳細経路を唯一の正解にせず、補助情報として提供する」が現実的です。</p>
 </details>
-
-
-
-<details>
-
-<summary>
-論点2：
-駅係員の支援をどの程度標準的に勧めるか
-</summary>
-
-<p>
-Claudeでは最優先の対応になっています。
-</p>
-
-<p>
-一方、
-当事者の会話からは、
-「自分でできることは自分でしたい」
-という感覚も見えます。
-</p>
-
-<p>
-したがって、
-<strong>
-利用可能な選択肢として明確に案内する一方、
-利用を前提にはしない
-</strong>
-という設計が考えられます。
-</p>
-
+<details><summary>論点B：駅係員の支援をどの程度「標準ルート」にするか</summary>
+<p>Claudeは非常に強く推奨します。一方、当事者の会話には「自分でできるから普段は頼らない」という感覚もあります。したがって、利用可能な選択肢として明確に知らせつつ、利用を前提化しない設計が合いそうです。</p>
 </details>
-
-
-
-<details>
-
-<summary>
-論点3：
-写真はアクセシビリティ向上に役立つのか
-</summary>
-
-<p>
-入口写真や経路写真は、
-視覚障害者本人には
-直接利用できない場合があります。
-</p>
-
-<p>
-しかし、
-同行者や、
-途中で声をかけてくれた第三者に
-見せる情報として役立つ場合があります。
-</p>
-
-<p>
-したがって、
-<strong>
-写真だけに依存せず、
-文字情報や代替テキストを添える
-</strong>
-ことが重要です。
-</p>
-
+<details><summary>論点C：写真はアクセシブルか</summary>
+<p>Copilotは入口写真等を提案し、Geminiも写真付き案内を補助に使います。視覚障害者本人には直接役立たない場合もありますが、同行者や声をかけた第三者に見せる資料としては機能します。写真にはテキスト情報や代替テキストを添える必要があります。</p>
 </details>
-
-
-
-<details>
-
-<summary>
-論点4：
-「お迎えが必要ですか？」だけで十分か
-</summary>
-
-<p>
-LINEの記録では、
-会場までのルートへの不安を書いたところ、
-車いす向け情報が追加されたものの、
-本人が求めていた内容とは少し違った、
-という経験も共有されています。
-</p>
-
-<p>
-これは、
-善意の対応であっても、
-<strong>
-本人の困りごとを確認する対話がなければ
-支援がずれることがある
-</strong>
-ことを示しています。
-</p>
-
+<details><summary>論点D：「迎えが必要ですか？」の聞き方</summary>
+<p>単純なYes/Noでは、本人の困りごとと主催者の想定する支援がずれることがあります。LINE記録でも、ルートへの不安を伝えたところ車いすルートが追加されたものの「それではない」という経験が語られています。自由記述＋個別返信の方が適しています。</p>
 </details>
-
 </section>
-
-
 
 <section id="integrated">
-
-<h2>
-7. 4者と当事者の声を統合すると
-</h2>
-
-<p>
-イベントのアクセシビリティを、
-「誘導員を何人出せるか」
-だけで考える必要はありません。
-</p>
-
-<p>
-次の4層として積み上げると、
-小規模イベントでも取り組みやすくなります。
-</p>
-
-
-<div class="layers">
-
-<div class="layer">
-第4層　
-必要な人への予約制同行・迎え
+<h2>7. 4者＋当事者の声を統合すると、こうなる</h2>
+<p>対応を「豪華な支援の有無」で考えるのではなく、下から順に積み上げると整理しやすくなります。</p>
+<div class="pyramid" aria-label="アクセシビリティ対応の4層">
+ <div class="layer">第4層　必要な人への予約制の同行・迎え</div>
+ <div class="layer">第3層　迷った・誤到着した時の連絡とリカバリー</div>
+ <div class="layer">第2層　正しい目的地を識別できる情報</div>
+ <div class="layer">第1層　誰でも読める基本アクセス情報</div>
 </div>
 
-<div class="layer">
-第3層　
-迷った・誤到着した時の連絡とリカバリー
-</div>
+<h3>第1層：誰でも読める基本アクセス情報</h3>
+<p>正式名称、住所、最寄駅、推奨改札、建物・階・部屋、文字による基本経路をHTMLやメール本文など読み上げ可能な形で提供します。</p>
 
-<div class="layer">
-第2層　
-正しい目的地を識別できる情報
-</div>
+<h3>第2層：目的地を「識別」できる情報</h3>
+<p>正確な地図ピン、類似名称施設への注意、ランドマーク、利用入口を加えます。ここが、当事者の事例を受けて特に重要になった層です。</p>
 
-<div class="layer">
-第1層　
-誰でも利用できる基本アクセス情報
-</div>
+<h3>第3層：リカバリー</h3>
+<p>当日連絡先、連絡可能時間、入口が分からない場合の迎え、別施設に到着した場合の移動方法などを決めます。猛暑や荒天時は、通常より早く人的支援へ切り替える選択肢も必要です。</p>
 
-</div>
+<h3>第4層：希望者への人的支援</h3>
+<p>駅係員の支援、会場スタッフ、主催者・サポートメンバーによる予約制の待ち合わせなどを用意します。「全員に介助」ではなく、必要な人が選べる形にします。</p>
 
-
-<h3>
-第1層：
-基本アクセス情報
-</h3>
-
-<p>
-正式名称、
-住所、
-最寄駅、
-推奨改札、
-建物、
-階、
-部屋、
-文字による基本経路を
-読み上げ可能な形で提供します。
-</p>
-
-
-<h3>
-第2層：
-目的地を識別する情報
-</h3>
-
-<p>
-正確な地図ピン、
-似た名称の別施設への注意、
-ランドマーク、
-利用する入口を加えます。
-</p>
-
-<p>
-今回の当事者の経験から、
-特に重要性が見えてきた層です。
-</p>
-
-
-<h3>
-第3層：
-リカバリー
-</h3>
-
-<p>
-当日連絡先、
-対応可能時間、
-入口が分からない場合の迎え、
-別施設へ着いた場合の対応などを
-決めておきます。
-</p>
-
-<p>
-猛暑や荒天時には、
-通常より早く人的支援へ切り替える
-という考え方も必要です。
-</p>
-
-
-<h3>
-第4層：
-希望者への人的支援
-</h3>
-
-<p>
-駅係員、
-会場スタッフ、
-主催者やサポートメンバーによる
-予約制の待ち合わせなどを
-組み合わせます。
-</p>
-
-<p>
-「全員に介助する」のではなく、
-必要な人が選べるようにします。
-</p>
-
-
-<div class="callout green">
-
-<strong>
-ここでのキーワードは
-「対話型のアクセシビリティ」です。
-</strong>
-
-<br>
-
-案内を一度作って終わるのではなく、
-
-申込時の声を聞く、
-
-本人へ返信する、
-
-必要なら調整する、
-
-当日の状況に応じて支援へ切り替える。
-
-この流れまで含めて
-アクセシビリティと捉えると、
-4つのAIの提案が一つにつながります。
-
-</div>
-
+<div class="callout good"><strong>重要：</strong>アクセシビリティは「完璧な案内を一度作って終わり」ではありません。申込時の声を受け、本人へ確認を返し、当日の状況に応じて補う<strong>対話型の運用</strong>として考えると、各AIの提案が一つにつながります。</div>
 </section>
 
-
-
-<section id="checklist">
-
-<h2>
-8. 開催前チェックリスト
-</h2>
-
-<ul class="check">
-
+<section id="check">
+<h2>8. 開催前チェックリスト</h2>
+<ul class="checklist">
 <li>□ 会場の正式名称を確認した</li>
-
-<li>□ 住所を確認した</li>
-
-<li>□ 建物名・棟・階・部屋を確認した</li>
-
-<li>□ 正確な地図ピンを主催者自身で確認した</li>
-
-<li>□ 近隣の類似名称施設を検索した</li>
-
-<li>□ 同系列施設が近くにないか確認した</li>
-
-<li>□ 「ここではありません」と示す施設を把握した</li>
-
+<li>□ 住所、建物名、棟、階、部屋を確認した</li>
+<li>□ 主催者自身が正確な地図ピンを確認した</li>
+<li>□ 近隣の類似名称・同系列施設を検索した</li>
+<li>□ 「ここではありません」と知らせる候補を把握した</li>
 <li>□ 第三者にも通じるランドマークを確認した</li>
-
-<li>□ 推奨駅を確認した</li>
-
-<li>□ 推奨改札を確認した</li>
-
-<li>□ エレベーター等の駅設備を確認した</li>
-
-<li>□ 駅係員による案内の利用方法を確認した</li>
-
+<li>□ 推奨駅・推奨改札を確認した</li>
+<li>□ 駅のエレベーター等を確認した</li>
+<li>□ 駅員による支援の利用方法を確認した</li>
 <li>□ 駅から会場までの主要な分岐を確認した</li>
-
 <li>□ 利用すべき建物入口を確認した</li>
-
-<li>□ 入口から受付までの経路を確認した</li>
-
+<li>□ 入口から受付までの導線を確認した</li>
 <li>□ 案内をテキストで読める形にした</li>
-
 <li>□ 地図URLと文字情報を併記した</li>
-
 <li>□ 写真だけに依存していない</li>
-
-<li>□ 申込時に希望を書ける欄を設けた</li>
-
-<li>□ 配慮の申出に個別返信した</li>
-
-<li>□ 当日の連絡方法を決めた</li>
-
-<li>□ 連絡可能時間を案内した</li>
-
+<li>□ 申込時に具体的な希望を書ける欄を設けた</li>
+<li>□ 配慮の申出には個別に返信した</li>
+<li>□ 当日の連絡先と対応時間を明示した</li>
 <li>□ 必要に応じ予約制の迎えを検討した</li>
-
-<li>□ 猛暑・荒天時の対応を考えた</li>
-
+<li>□ 猛暑・荒天時の代替手段を考えた</li>
 </ul>
-
 </section>
-
-
 
 <section id="template">
-
-<h2>
-9. 参加者向けアクセス案内のひな形
-</h2>
-
-
+<h2>9. 参加者向け「アクセス案内」ひな形</h2>
 <div class="template">
-
-
 <dl>
-
-<dt>
-会場
-</dt>
-
-<dd>
-［正式名称］
-</dd>
-
-
-<dt>
-住所
-</dt>
-
-<dd>
-［住所］
-</dd>
-
-
-<dt>
-建物・階・部屋
-</dt>
-
-<dd>
-［ビル名／棟／○階／会議室名］
-</dd>
-
-
-<dt>
-正確な地図
-</dt>
-
-<dd>
-［主催者が確認した地図ピンURL］
-</dd>
-
-
-<dt>
-最寄り駅
-</dt>
-
-<dd>
-［路線名・駅名］
-</dd>
-
-
-<dt>
-推奨改札
-</dt>
-
-<dd>
-［改札名］
-</dd>
-
+<dt>会場</dt><dd>［正式名称］</dd>
+<dt>住所</dt><dd>［住所］</dd>
+<dt>建物・階・部屋</dt><dd>［ビル名／棟／○階／会議室名］</dd>
+<dt>正確な地図ピン</dt><dd>［Google Maps 等の確認済みURL］</dd>
+<dt>最寄り駅</dt><dd>［路線・駅］</dd>
+<dt>推奨改札</dt><dd>［改札名］</dd>
 </dl>
-
-
-<p>
-
-<strong>
-駅から会場まで
-</strong>
-
-<br>
-
-［改札］を出て
-［方向］へ進みます。
-
-［交差点・分岐・目印］で
-［右／左］へ進みます。
-
-［ランドマーク］の
-［手前／先／向かい］にある
-［入口の特徴］の入口をご利用ください。
-
-</p>
-
-
-<p>
-
-<strong>
-取り違えにご注意ください
-</strong>
-
-<br>
-
-近くに
-「［似た名称の施設］」
-がありますが、
-今回の会場とは別です。
-
-今回の会場は
-「［識別ポイント］」
-にあります。
-
-</p>
-
-
-<p>
-
-<strong>
-駅構内の移動について
-</strong>
-
-<br>
-
-駅構内や乗換えに案内が必要な場合は、
-利用する交通事業者へ
-案内・サポートについて
-ご相談いただけます。
-
-</p>
-
-
-<p>
-
-<strong>
-主催者への事前相談
-</strong>
-
-<br>
-
-駅からの移動、
-待ち合わせ、
-盲導犬同伴、
-電話以外の連絡方法など、
-事前に伝えておきたいことがあれば
-［期限］までに
-［連絡方法］でお知らせください。
-
-可能な対応を確認し、
-主催者から個別にご連絡します。
-
-</p>
-
-
-<p>
-
-<strong>
-当日、近くまで来たものの
-入口が分からない場合
-</strong>
-
-<br>
-
-［電話／SMS／チャット等］
-
-<br>
-
-対応時間：
-［　　　］
-
-</p>
-
-
-<p class="small">
-
-※この情報は
-［確認日］時点で
-主催者が確認した内容です。
-
-工事、
-交通状況、
-施設運用等によって
-変更される場合があります。
-
-</p>
-
-
+<p><strong>駅から会場まで：</strong><br>
+［改札］を出て［方向］へ進みます。［交差点・分岐・目印］で［右／左］へ進み、［ランドマーク］の［手前／先／向かい］にある［入口の特徴］の入口をご利用ください。</p>
+<p><strong>取り違え注意：</strong><br>
+近くに「［似た名称の施設］」がありますが、今回の会場とは別です。今回の会場は「［識別ポイント］」にあります。</p>
+<p><strong>駅構内の移動について：</strong><br>
+駅構内や乗換えに案内が必要な場合は、利用する交通事業者の案内・サポートをご利用いただけます。利用方法は［案内先］をご確認ください。</p>
+<p><strong>主催者への事前相談：</strong><br>
+駅からの移動、待ち合わせ、盲導犬同伴、電話以外の連絡方法など、事前に伝えておきたいことがあれば［期限］までに［連絡方法］でお知らせください。可能な対応を確認し、主催者から個別にご連絡します。</p>
+<p><strong>当日、近くまで来たものの入口が分からない場合：</strong><br>
+［電話／SMS／チャット等］　対応時間：［　］</p>
+<p class="small">※この情報は［確認日］時点で主催者が確認した内容です。工事・交通状況・施設運用等により変更される場合があります。</p>
 </div>
-
 </section>
 
-
-
-<section>
-
-<h2>
-10. この資料をどう使うか
-</h2>
-
-<p>
-このページは
-「アクセシビリティ対応の完成形」
-を示すものではありません。
-</p>
-
-<p>
-むしろ、
-主催者、
-サポートメンバー、
-障がい当事者、
-その他の参加者が
-一緒に考えるための
-<strong>
-共通の話題提供資料
-</strong>
-です。
-</p>
-
-
-<div class="callout">
-
-<strong>
-話し合ってみたい問い
-</strong>
-
-<ul>
-
-<li>
-私たちのイベントなら、
-第1層から第4層のどこまで実施できるだろうか。
-</li>
-
-<li>
-現地に詳しくない主催者でも、
-最低限確認できる情報は何だろうか。
-</li>
-
-<li>
-「自分で行きたい」という希望と
-「安全網を用意すること」を
-どう両立できるだろうか。
-</li>
-
-<li>
-視覚障害者向けに改善した案内が、
-実は初めて来る人、
-高齢者、
-外国人などにも
-役立つのではないだろうか。
-</li>
-
-<li>
-イベント終了後に
-参加者からどのようなフィードバックを集めれば、
-次回の案内を改善できるだろうか。
-</li>
-
+<section id="sources">
+<h2>10. この資料の位置づけと出典</h2>
+<p>このHTMLは、提供された4つの生成AI資料と、LINEオープンチャットの会話記録を比較・再構成したものです。外部の一般知識で各資料の内容を「訂正」することはせず、資料内で述べられている考え方をできるだけ保ったうえで統合しています。</p>
+<ul class="source-list">
+<li><strong>Claude：</strong>「視覚障害のある参加者への会場アクセス準備チェックリスト」― 駅係員の誘導サービス、個別ヒアリング、類似施設情報、正確な位置情報等。</li>
+<li><strong>Gemini：</strong>「視覚障害のある参加者をお迎えするための交通アクセシビリティ案内ガイド」― 駅・経路・会場導線の具体的確認とテキスト案内。</li>
+<li><strong>Copilot：</strong>「交通・地理アクセシビリティ対応ガイド」― 支援の段階化、対話、支援の押し付けを避ける視点。</li>
+<li><strong>ChatGPT：</strong>「交通・地理アクセシビリティ 統合版」― 情報・選択肢・役割分担・当日のリカバリーを統合した実務設計。</li>
+<li><strong>LINEオープンチャット記録：</strong>2026年8月9日〜11日に共有された、会場誤認、類似施設、ランドマーク、位置ピン、迎え、申込時の対話、情報のバリア等に関する経験・意見。本文では個人名を原則として一般化しています。</li>
 </ul>
 
-</div>
-
+<div class="callout"><strong>話し合いのために：</strong>この資料は「完成した正解」ではなく、イベントごとの規模、人員、地域、天候、参加者の希望に合わせて調整するための共通土台です。当事者から新しい経験や提案が出たら、その内容をもとに更新していくことを想定しています。</div>
 </section>
-
-
 </main>
 
-
-<footer>
-
-<div class="footer-inner">
-
-<strong>
-交通・地理アクセシビリティ
-― 生成AI4者の視点比較と統合整理
-</strong>
-
-<p class="small" style="color:#dce7ec">
-
-Gemini、ChatGPT、Claude、Copilotの各資料と、
-2026年8月9日〜11日の
-LINEオープンチャットで共有された
-障がい当事者・参加者等の経験・意見をもとに
-比較・再構成した資料です。
-
-</p>
-
-</div>
-
-</footer>
-
-
+<footer><div class="footerin">
+<strong>交通・地理アクセシビリティ ― 生成AI4者の視点比較と統合整理</strong>
+<p class="small" style="color:#d7e4ea">GitHub Pages等で共有しやすい単一HTMLとして作成。JavaScriptを使用せず、見出し構造、キーボードフォーカス、レスポンシブ表、縮小動作設定、印刷スタイル等に配慮しています。</p>
+</div></footer>
 </body>
 </html>
