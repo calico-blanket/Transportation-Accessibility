@@ -1,1 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>どれだけ調べても、たどり着けない。｜交通アクセシビリティの当事者の声</title>
+<style>
+  :root {
+    --paper: #faf8f4;
+    --ink: #232323;
+    --ink-soft: #4a453f;
+    --hero-bg: #1f2a44;
+    --hero-text: #f4f1ea;
+    --hero-sub: #c9cddb;
+    --rust: #a24632;
+    --rust-soft: #f1e3de;
+    --line: #ddd6c9;
+    --teal-bg: #e9f2ee;
+    --teal-text: #1c4438;
+    --teal-line: #4f8f78;
+    --focus: #1f6feb;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "BIZ UDPGothic", "BIZ UDGothic", "Yu Gothic", "Meiryo", sans-serif;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--rust); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: #7c3520; }
+
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--hero-bg);
+    color: var(--hero-text);
+    padding: 72px 0 56px;
+  }
+
+  .hero .wrap { max-width: 640px; }
+
+  .hero .eyebrow {
+    color: var(--hero-sub);
+    font-size: 0.95rem;
+    margin: 0 0 18px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+    line-height: 1.5;
+    margin: 0 0 24px;
+    font-weight: 700;
+    opacity: 0;
+    animation: rise 0.7s ease-out 0.1s forwards;
+  }
+
+  .hero p.lead {
+    font-size: 1.05rem;
+    color: var(--hero-sub);
+    max-width: 34em;
+    margin: 0 0 8px;
+    opacity: 0;
+    animation: rise 0.7s ease-out 0.3s forwards;
+  }
+
+  .hero .attribution {
+    margin-top: 28px;
+    font-size: 0.9rem;
+    color: #9aa0b5;
+    border-top: 1px solid #3a4562;
+    padding-top: 18px;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1, .hero p.lead { animation: none; opacity: 1; }
+  }
+
+  /* ---------- Sections ---------- */
+  main { padding: 8px 0 40px; }
+
+  section { padding: 40px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--rust);
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin: 0 0 8px;
+    font-weight: 700;
+  }
+
+  h2 + .section-note {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    margin: 0 0 24px;
+  }
+
+  h3 {
+    font-size: 1.12rem;
+    margin: 32px 0 14px;
+    font-weight: 700;
+  }
+
+  h3 .num {
+    color: var(--rust);
+    margin-right: 4px;
+  }
+
+  p { margin: 0 0 1.1em; }
+
+  ul {
+    margin: 0 0 1.2em;
+    padding-left: 1.3em;
+  }
+  ul ul {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+  }
+  li { margin-bottom: 0.55em; }
+  li::marker { color: var(--rust); }
+  li ul li::marker { color: #b9927f; }
+
+  strong { background: linear-gradient(to bottom, transparent 60%, var(--rust-soft) 60%); }
+
+  .pull {
+    margin: 28px 0;
+    padding: 18px 22px;
+    background: var(--rust-soft);
+    border-left: 4px solid var(--rust);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #5c2416;
+  }
+
+  .good-box {
+    margin: 28px 0 4px;
+    padding: 22px 24px;
+    background: var(--teal-bg);
+    border-left: 4px solid var(--teal-line);
+    color: var(--teal-text);
+  }
+  .good-box h3 { margin-top: 0; color: var(--teal-text); }
+  .good-box li::marker { color: var(--teal-line); }
+
+  .links {
+    font-size: 0.95rem;
+    word-break: break-all;
+  }
+
+  .subhead {
+    font-weight: 700;
+    margin: 24px 0 8px;
+  }
+
+  footer {
+    padding: 32px 0 60px;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 52px 0 40px; }
+    section { padding: 30px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">情報アクセシビリティ勉強会　オープンチャットより</p>
+    <h1>どれだけ調べても、たどり着けない。</h1>
+    <p class="lead">
+      車椅子を利用し、記憶障害とともに生きるファルさんが、事前にどれだけ下調べをしても目的地にたどり着けない現実について書いてくれました。「情報はある、でも実際には使えない」——その具体的な場面を、ここに記録します。
+    </p>
+    <div class="attribution">投稿：ファルさん／代読・共有：みるくさん</div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="sannomiya">
+    <p class="section-label">三宮駅について</p>
+    <h2>三宮駅における交通アクセシビリティ上の課題</h2>
+    <p class="section-note">阪神間に住む方への情報として。</p>
+
+    <ul>
+      <li>JR三ノ宮駅（今回AI勉強会がある改札側）について、参議院選の振り返りで安野さんも三ノ宮での演説が終わり、次の移動で三ノ宮駅に向かったら改札口が分からずタイムロスが発生したと言われていたのが印象的だった</li>
+      <li>JR三ノ宮駅（南側）は、駅の前に通りと商業施設が併設してある上、標識もない戦前の構造物なので、歩ける人も車椅子ユーザーも分かりにくい状態
+        <ul>
+          <li>点字ブロックもないか、途中で切れている</li>
+          <li>そのため、山側改札まで行くか、エレベーターを駆使して移動するかになると思う</li>
+        </ul>
+      </li>
+      <li>AI勉強会の帰りこそ、土地勘のない人は迷うと思う</li>
+      <li>先日三宮を車椅子ユーザーの友人と利用したが、外観からは駅直結のエレベーターの場所が分かりにくかったような気がする（みるくさんより）
+        <ul>
+          <li>友人が三宮駅に慣れていたのでそのときは円滑に進んだが、みるくさんだけだと難しかったと思う</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section id="general">
+    <p class="section-label">ファルさんの投稿より</p>
+    <h2>関西在住・身体、精神重度障害者が「目的地にたどり着けない」問題</h2>
+
+    <p>私は関西在住で、身体・精神の両方に重度の障害があります。かなり事前に下調べをしていても、目的地までたどり着けないことがあり、特に駅周辺や地下道は私にとって「鬼門」です。</p>
+    <p>これは単に「道に迷いやすい」という問題ではありません。車椅子利用、電動車椅子の速度制限、記憶障害、地下での位置情報の問題などが重なることで、一般の人には問題にならない情報不足が、「目的地に到達できない」という大きな障壁になります。</p>
+
+    <h3><span class="num">1．</span>Googleマップだけでは車椅子で移動できない</h3>
+    <ul>
+      <li>Googleマップには車椅子対応ルートがあるが、駅周辺ではバリアフリーを優先するため、地下道を通るルートが表示されることがある
+        <ul>
+          <li>しかし、地下に入るとスマートフォンの位置情報が正確に機能しなくなる</li>
+          <li>さらに、地下へ降りるエレベーターに乗る際、「何階まで行けばよいのか」がエレベーター前に書かれていないことがある
+            <ul>
+              <li>各階の案内がエレベーターの中にしかない場合、乗ってから確認することになるが、探している間にエレベーターが動き始め、目的の階で降りられないことがある</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>事前にどれだけネットで調べても、建物や地下通路にあるエレベーターで何階で乗り換えるのかといった情報までは掲載されていないことが多く、ここは事前調査だけでは避けられない</li>
+    </ul>
+    <div class="pull">乗ってから探している間にエレベーターが動き始め、目的の階で降りられないことがある。</div>
+
+    <h3><span class="num">2．</span>地上ルートにも電動車椅子ならではの問題がある</h3>
+    <ul>
+      <li>「地下が分からないなら地上を通ればいい」というわけでもない
+        <ul>
+          <li>例えば、地図上では目印となる建物名が表示されていても、実際の建物にはその名前が大きく表示されていないことがある</li>
+          <li>また、交差点の幅が広い場合、電動車椅子で横断していると、歩行者信号が点滅してからでは渡り切れないことがある
+            <ul>
+              <li>歩行者は信号が点滅すると駆け足で渡れるが、日本では電動車椅子の最高速度は時速6km（早歩き速度）と決まりがある。急ぎたくても速度を上げることはできない</li>
+              <li>そのため、横断歩道の途中で歩行者信号が赤になり、自分だけが取り残された状態になることがある</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <div class="pull">横断歩道の途中で歩行者信号が赤になり、自分だけが取り残された状態になることがある。</div>
+
+    <h3><span class="num">3．</span>地下では「自分がどこにいるのか分からなくなる」</h3>
+    <ul>
+      <li>地下道がB1、B2、さらに複数の建物や地下街へとつながっていくほど、地図そのものを理解することが難しくなる
+        <ul>
+          <li>さらに位置情報が正確に使えないため、「現在地がどこなのか」「どちらに進んでいるのか」が分からなくなる</li>
+        </ul>
+      </li>
+      <li>工事によって地下道のルートが大きく変更されている場合もあるが、その変更がGoogleマップに反映されていないこともある
+        <ul>
+          <li>現地に迂回ルートの看板があっても、歩ける人を前提とした案内だったり、「○○方面」といった抽象的な表示だけだったりして、車椅子利用者にとっては目印として機能しないことがある</li>
+        </ul>
+      </li>
+      <li>道行く人に尋ねても、複雑な地下道では正確なエレベーター位置を把握している人が少なく、解決しないこともある</li>
+    </ul>
+
+    <h3><span class="num">4．</span>AIの道案内も、現状では安心して使えない</h3>
+    <ul>
+      <li>道に迷ったとき、GeminiやChatGPTなどのAIに相談することもある
+        <ul>
+          <li>「車椅子で通れるルートを文字で教えてほしい」と伝えると案内を出してくれるが、実際には間違っていることがかなりある
+            <ul>
+              <li>例えば三ノ宮周辺の地下道では、実際には地下でつながっていない別の建物について、「地下でつながっている」と案内されたことがある</li>
+            </ul>
+          </li>
+          <li>「その案内は間違っている」と指摘するとAIは謝るが、その後も別の形で間違ったルートを案内してくることがある</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="pull">現時点ではAIも「最終的な道案内」としては信用できない。</div>
+
+    <h3><span class="num">5．</span>「人に聞けばいい」も解決策にならない</h3>
+    <ul>
+      <li>道に迷ったら人に尋ねるという方法もある
+        <ul>
+          <li>しかし、記憶障害があるため、一人の人から道順を教えてもらっても、その内容を覚えていられないことがある
+            <ul>
+              <li>そのため、教えてもらった道順を忘れて、また別の人に尋ねる……ということを繰り返す</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>「分からなければ人に聞けばいい」という一般的な解決策が、障害のある人にとっては解決策にならない場合がある</li>
+    </ul>
+
+    <h3><span class="num">6．</span>駅のエレベーター案内も分かりにくい</h3>
+    <ul>
+      <li>JRは国鉄を前身としていることもあり、駅構内の案内やバリアフリー設備の表示が比較的整っている</li>
+      <li>一方、私鉄ではエレベーターの案内表示が最低限しかなく、とても分かりにくいと感じる駅がある
+        <ul>
+          <li>例えば神戸・三宮では、駅のエレベーターが入っている建物が比較的新しいため、外観だけでは「ここに駅直結のエレベーターがある」と分からない</li>
+          <li>建物にも駅のエレベーターだと分かる目印が十分になく、逆に改札口からエレベーターまでの案内も細かく表示されていないことがある</li>
+        </ul>
+      </li>
+      <li>本人も迷うが、駅では高齢の方や他県から来た方から「エレベーターはどこですか？」と聞かれることがある
+        <ul>
+          <li>また、「この場所（駅）は建物の何階なのか」「地上に出るにはエレベーターの何階ボタンを押せばいいのか」が分からない人にも遭遇する</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="pull">これは、障害者だけの問題ではなく、初めてその場所を利用する人、高齢者、旅行者など、多くの人に共通する問題だと思う。</div>
+
+    <h3>こうなったらいい案</h3>
+    <p>私が求めているのは、「車椅子でも利用できます」という情報だけではありません。実際にその場所までたどり着けるための、具体的で連続した情報が必要です。</p>
+
+    <p class="subhead">地図</p>
+    <ul>
+      <li>駅・地下街・建物のエレベーターについて、入口の場所を明確に表示する
+        <ul>
+          <li>建物の外から見ても「駅に行くためのエレベーター」だと分かる表示</li>
+          <li>改札からエレベーターまでの具体的な案内</li>
+          <li>エレベーターが何階と何階を結んでいるのかの表示</li>
+        </ul>
+      </li>
+      <li>「車椅子で通れる」という情報だけでなく、実際のルートを具体的に示す
+        <ul>
+          <li>「○○方面」だけではなく、「このエレベーターでB1へ → 左側の通路 → ○○入口」というような連続した案内</li>
+          <li>地下道では、現在地を確認できる目印を増やす</li>
+        </ul>
+      </li>
+      <li>工事や通行止めによるルート変更を、地図サービスにも迅速に反映する
+        <ul>
+          <li>Googleマップなどのデジタル地図と現地案内の情報を一致させる</li>
+          <li>車椅子利用者が利用できる迂回ルートを明示する</li>
+        </ul>
+      </li>
+      <li>地下でも現在地を確認できる仕組みを整備する
+        <ul>
+          <li>地下でも位置情報が分かる仕組み</li>
+          <li>地下街・駅構内で利用できる屋内地図や現在地表示</li>
+          <li>「今、自分がどこにいるのか」が一目で分かる案内</li>
+        </ul>
+      </li>
+      <li>障害者だけでなく「初めて来た人」にも分かる情報設計にする</li>
+    </ul>
+
+    <p class="subhead">写真付き地図について</p>
+    <ul>
+      <li>理解が難しい地図案内の例：車椅子ユーザー向けの写真と文字がセットになっている地図。精神障害者（発達障害、高次脳機能障害）には理解が難しい
+        <ul>
+          <li class="links"><a href="https://barrier-free-map.com/6010.php" target="_blank" rel="noopener">barrier-free-map.com/6010.php</a></li>
+          <li>こういった地図を見ても途中の道のりの情報がないため理解が難しい</li>
+        </ul>
+      </li>
+      <li>文字より動画の方が分かりやすい
+        <ul>
+          <li class="links"><a href="https://m.youtube.com/watch?v=3ce30KPX3J4" target="_blank" rel="noopener">参考動画（YouTube）</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="good-box">
+      <h3>参考になった良い事例</h3>
+      <ul>
+        <li>先日横浜に初めて行ったが、街も人も車椅子ユーザーに優しく、病院も優しくて驚いた
+          <ul>
+            <li>バリアフリーが進んでいて、「同じ日本なの？」と思えるほど衝撃的だった</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reactions">
+    <p class="section-label">投稿への反応</p>
+    <h2>ファルさんの投稿への反応</h2>
+    <p class="section-note">みるくさんより。</p>
+    <ul>
+      <li>先日三宮を車椅子ユーザーの友人と利用したが、外観からは駅直結のエレベーターの場所が分かりにくかったような気がする、という体験談があった。
+        <ul>
+          <li>友人が三宮駅に慣れていたので円滑に進んだが、自分だけだと難しかったと思う</li>
+        </ul>
+      </li>
+      <li>「あらゆる人にとって『一律に』分かりやすい、生きやすい状態を作るのは難しいが、多様なニーズがあることを前提に情報を発信したい」という気づきを得た。</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  出典：情報アクセシビリティ勉強会オープンチャットでのやり取り（2026年8月）
+</footer>
+
+</body>
+</html>
 
