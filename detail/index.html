@@ -1,10 +1,14 @@
+
+
+Geo detail · HTML
 <!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>視覚障害のある参加者への交通アクセシビリティ対応｜4者の生成AI提案の比較</title>
+<title>視覚障害のある参加者への交通・地理アクセシビリティ対応｜4者の生成AI提案の比較（詳細版）</title>
 <style>
+ 
   :root{
     --navy:#12395c;
     --navy-dark:#0b2338;
@@ -15,432 +19,480 @@
     --text-sub:#4a4a4a;
     --focus:#c65b00;
     --purpose-bg:#eef3f7;
-
+ 
     --c-copilot:#0b5da8;
     --c-chatgpt:#0f7a4a;
     --c-3:#6a3d9a;
     --c-gemini:#b3560c;
   }
-
   *{box-sizing:border-box;}
-
   html{scroll-behavior:smooth;}
-
   body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
+    margin:0;background:var(--bg);color:var(--text);
     font-family:"BIZ UDPGothic","BIZ UDGothic","Meiryo","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
-    line-height:1.8;
-    font-size:18px;
+    line-height:1.8;font-size:18px;
   }
-
-  .skip-link{
-    position:absolute;
-    left:-9999px;
-    top:0;
-    background:var(--navy-dark);
-    color:#fff;
-    padding:10px 16px;
-    z-index:100;
-    border-radius:0 0 6px 0;
-  }
-  .skip-link:focus{
-    left:0;
-  }
-
+  .skip-link{position:absolute;left:-9999px;top:0;background:var(--navy-dark);color:#fff;padding:10px 16px;z-index:100;border-radius:0 0 6px 0;}
+  .skip-link:focus{left:0;}
   a{color:var(--navy);}
-  a:focus, button:focus, summary:focus{
-    outline:3px solid var(--focus);
-    outline-offset:2px;
+  a:focus, button:focus, summary:focus{outline:3px solid var(--focus);outline-offset:2px;}
+  header.page-header{background:var(--navy);color:#fff;padding:32px 20px 28px;}
+  header.page-header .inner{max-width:900px;margin:0 auto;}
+  header.page-header h1{font-size:1.6rem;margin:0 0 6px;line-height:1.5;}
+  header.page-header p{margin:0;color:#dce6ee;font-size:1rem;}
+  header.page-header .version-tag{
+    display:inline-block;margin-top:10px;background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.4);border-radius:999px;padding:3px 12px;font-size:0.85rem;
   }
-
-  header.page-header{
-    background:var(--navy);
-    color:#fff;
-    padding:32px 20px 28px;
-  }
-  header.page-header .inner{
-    max-width:900px;
-    margin:0 auto;
-  }
-  header.page-header h1{
-    font-size:1.6rem;
-    margin:0 0 6px;
-    line-height:1.5;
-  }
-  header.page-header p{
-    margin:0;
-    color:#dce6ee;
-    font-size:1rem;
-  }
-
-  nav.toc{
-    max-width:900px;
-    margin:20px auto 0;
-    padding:0 20px;
-  }
-  nav.toc h2{
-    font-size:1rem;
-    margin:0 0 8px;
-    color:var(--text-sub);
-  }
-  nav.toc ol{
-    margin:0;
-    padding-left:1.2em;
-    columns:2;
-    font-size:0.95rem;
-  }
+  nav.toc{max-width:900px;margin:20px auto 0;padding:0 20px;}
+  nav.toc h2{font-size:1rem;margin:0 0 8px;color:var(--text-sub);}
+  nav.toc ol{margin:0;padding-left:1.2em;columns:2;font-size:0.95rem;}
   nav.toc li{margin-bottom:4px;}
-
-  main{
-    max-width:900px;
-    margin:0 auto;
-    padding:20px 20px 60px;
-  }
-
-  section{
-    margin-top:36px;
-  }
-
-  .intro-box{
-    background:var(--card-bg);
-    border:1px solid var(--border);
-    border-left:6px solid var(--navy);
-    border-radius:8px;
-    padding:18px 20px;
-  }
-
-  h2.section-title{
-    font-size:1.3rem;
-    color:var(--navy-dark);
-    border-bottom:2px solid var(--border);
-    padding-bottom:8px;
-    margin-bottom:14px;
-  }
-
-  .common-list{
-    background:var(--card-bg);
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:18px 24px;
-  }
+  main{max-width:900px;margin:0 auto;padding:20px 20px 60px;}
+  section{margin-top:36px;}
+  .intro-box{background:var(--card-bg);border:1px solid var(--border);border-left:6px solid var(--navy);border-radius:8px;padding:18px 20px;}
+  .intro-box p{margin:0 0 10px;}
+  .intro-box p:last-child{margin-bottom:0;}
+  h2.section-title{font-size:1.3rem;color:var(--navy-dark);border-bottom:2px solid var(--border);padding-bottom:8px;margin-bottom:14px;}
+  .common-list{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 24px;}
   .common-list li{margin-bottom:8px;}
-
-  details.theme{
-    background:var(--card-bg);
-    border:1px solid var(--border);
-    border-radius:8px;
-    margin-bottom:14px;
-    overflow:hidden;
+ 
+  .flow-wrap{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;}
+  .flow-step{flex:1 1 150px;background:var(--card-bg);border:1px solid var(--border);border-top:5px solid var(--navy);border-radius:8px;padding:12px 14px;position:relative;}
+  .flow-step .num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;font-size:0.8rem;font-weight:700;margin-bottom:6px;}
+  .flow-step h3{margin:0 0 6px;font-size:1rem;color:var(--navy-dark);}
+  .flow-step .fail{font-size:0.9rem;color:#8a2b0c;margin:0 0 6px;}
+  .flow-step .fix{font-size:0.9rem;color:#0f5c33;margin:0;}
+  .flow-step .fail::before{content:"起きたこと：";font-weight:700;}
+  .flow-step .fix::before{content:"防げること：";font-weight:700;}
+  @media (min-width:700px){
+    .flow-wrap{flex-wrap:nowrap;}
+    .flow-step:not(:last-child)::after{content:"›";position:absolute;right:-16px;top:50%;transform:translateY(-50%);font-size:1.6rem;color:var(--text-sub);z-index:2;}
   }
-  details.theme > summary{
-    cursor:pointer;
-    list-style:none;
-    padding:16px 20px;
-    font-size:1.1rem;
-    font-weight:700;
-    color:var(--navy-dark);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-  }
+ 
+  details.theme{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;margin-bottom:14px;overflow:hidden;}
+  details.theme > summary{cursor:pointer;list-style:none;padding:16px 20px;font-size:1.1rem;font-weight:700;color:var(--navy-dark);display:flex;align-items:center;justify-content:space-between;gap:12px;}
   details.theme > summary::-webkit-details-marker{display:none;}
-  details.theme > summary .marker{
-    font-size:0.85rem;
-    color:var(--text-sub);
-    font-weight:400;
-    white-space:nowrap;
-  }
-  details.theme[open] > summary{
-    border-bottom:1px solid var(--border);
-  }
-  details.theme > summary:hover{
-    background:#f3f1ea;
-  }
-
-  .theme-body{
-    padding:16px 20px 20px;
-  }
-
-  .purpose{
-    background:var(--purpose-bg);
-    border-radius:6px;
-    padding:10px 14px;
-    font-size:0.98rem;
-    margin:0 0 16px;
-  }
+  details.theme > summary .marker{font-size:0.85rem;color:var(--text-sub);font-weight:400;white-space:nowrap;}
+  details.theme[open] > summary{border-bottom:1px solid var(--border);}
+  details.theme > summary:hover{background:#f3f1ea;}
+  .theme-body{padding:16px 20px 20px;}
+  .purpose{background:var(--purpose-bg);border-radius:6px;padding:10px 14px;font-size:0.98rem;margin:0 0 16px;}
   .purpose strong{color:var(--navy-dark);}
-
-  .ai-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:14px;
-  }
-
-  .ai-card{
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:12px 14px;
-  }
-  .ai-badge{
-    display:inline-block;
-    color:#fff;
-    font-size:0.85rem;
-    font-weight:700;
-    padding:3px 10px;
-    border-radius:999px;
-    margin-bottom:8px;
-  }
+  .ai-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+  .ai-card{border:1px solid var(--border);border-radius:8px;padding:12px 14px;}
+  .ai-badge{display:inline-block;color:#fff;font-size:0.85rem;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:8px;}
   .ai-card.copilot .ai-badge{background:var(--c-copilot);}
   .ai-card.chatgpt .ai-badge{background:var(--c-chatgpt);}
   .ai-card.doc3 .ai-badge{background:var(--c-3);}
   .ai-card.gemini .ai-badge{background:var(--c-gemini);}
-
   .ai-card p{margin:0;font-size:0.98rem;color:var(--text);}
-  .ai-card p.small-note{
-    margin-top:6px;
-    font-size:0.85rem;
-    color:var(--text-sub);
+  .ai-card p.small-note{margin-top:6px;font-size:0.9rem;color:var(--text-sub);}
+  .case-box{background:#fff7ec;border:1px solid #e8cfa0;border-radius:8px;padding:16px 20px;margin-top:14px;}
+  .case-box h3{margin:0 0 8px;font-size:1rem;color:#7a4a00;}
+  .version-switch{max-width:900px;margin:14px auto 0;padding:0 20px;font-size:0.95rem;color:var(--text-sub);}
+ 
+  /* まとめセクション */
+  .layer-stack{display:flex;flex-direction:column;gap:10px;}
+  .layer-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start;}
+  .layer-card .lnum{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;}
+  .layer-card h3{margin:0 0 4px;font-size:1.02rem;color:var(--navy-dark);}
+  .layer-card p{margin:0;font-size:0.95rem;}
+ 
+  .priority-block{margin-bottom:18px;}
+  .priority-head{display:inline-block;font-size:0.85rem;font-weight:700;color:#fff;padding:3px 12px;border-radius:999px;margin-bottom:10px;}
+  .priority-head.must{background:#a02b1f;}
+  .priority-head.should{background:#0b5da8;}
+  .priority-head.optional{background:#5a6570;}
+  ul.check-list{list-style:none;margin:0;padding:0;}
+  ul.check-list li{
+    position:relative;padding-left:30px;margin-bottom:10px;font-size:0.98rem;
   }
-
-  footer{
-    max-width:900px;
-    margin:40px auto 0;
-    padding:20px;
-    font-size:0.9rem;
-    color:var(--text-sub);
-    border-top:1px solid var(--border);
+  ul.check-list li::before{
+    content:"";position:absolute;left:0;top:3px;width:18px;height:18px;
+    border:2px solid var(--navy);border-radius:4px;background:#fff;
   }
-
-  @media print{
-    details.theme{border:1px solid #999;}
-  }
+ 
+  .template-box{background:var(--card-bg);border:2px solid var(--border);border-radius:10px;padding:18px 20px;}
+  .template-box dl{display:grid;grid-template-columns:9em 1fr;gap:6px 12px;margin:0 0 14px;}
+  .template-box dt{font-weight:700;color:var(--navy-dark);font-size:0.95rem;}
+  .template-box dd{margin:0;font-size:0.95rem;}
+  .template-box .free-text{font-size:0.95rem;background:var(--purpose-bg);border-radius:6px;padding:10px 12px;margin:0 0 10px;}
+  .template-box .free-text strong{display:block;color:var(--navy-dark);margin-bottom:4px;font-size:0.9rem;}
+  .template-note{font-size:0.85rem;color:var(--text-sub);margin-top:10px;}
+ 
+  footer{max-width:900px;margin:40px auto 0;padding:20px;font-size:0.9rem;color:var(--text-sub);border-top:1px solid var(--border);}
+  @media print{ details.theme{border:1px solid #999;} }
+ 
 </style>
 </head>
 <body>
-
+ 
 <a class="skip-link" href="#main-content">メインコンテンツへスキップ</a>
-
+ 
 <header class="page-header">
   <div class="inner">
-    <h1>視覚障害のある参加者への交通アクセシビリティ対応</h1>
-    <p>単日開催セミナーを想定した、4者の生成AI（Copilot／ChatGPT／Claude／Gemini）による提案の比較</p>
+    <h1>視覚障害のある参加者への交通・地理アクセシビリティ対応</h1>
+    <p>当事者コミュニティで共有された体験をもとに、Copilot・ChatGPT・Claude・Geminiの4者が検討した提案の比較</p>
+    <span class="version-tag">詳細版</span>
   </div>
 </header>
-
+ 
+<div class="version-switch"><a href="geo_simple.html">← 簡易版に戻る</a></div>
+ 
 <nav class="toc" aria-label="目次">
   <h2>目次</h2>
   <ol>
     <li><a href="#common">共通する考え方</a></li>
-    <li><a href="#theme1">事前に何を調べるか</a></li>
-    <li><a href="#theme2">誰が、どう誘導するか</a></li>
-    <li><a href="#theme3">案内文をどう書くか</a></li>
-    <li><a href="#theme4">申込時に何を聞くか</a></li>
-    <li><a href="#theme5">当日の体制</a></li>
+    <li><a href="#case">きっかけとなった出来事</a></li>
+    <li><a href="#theme1">なぜ地理アクセシビリティが必要か</a></li>
+    <li><a href="#theme2">類似名称・類似施設の誤認防止</a></li>
+    <li><a href="#theme3">正確な位置情報・目印</a></li>
+    <li><a href="#theme4">テキストによる経路案内</a></li>
+    <li><a href="#theme5">当日・イレギュラー時のリカバリー体制</a></li>
+    <li><a href="#theme6">申込時のヒアリングと支援の選び方</a></li>
+    <li><a href="#summary">無理のない支援づくり（まとめ）</a></li>
   </ol>
 </nav>
-
+ 
 <main id="main-content">
-
+ 
   <section id="common">
     <div class="intro-box">
-      <p>4者とも、主催者が現地に不慣れ・遠方在住であっても対応は可能という立場です。参加者に付き添って移動支援をすること自体は前提とせず、<strong>「参加者が安全に来場できるよう、必要な情報と相談先を事前に整理して渡す」</strong>という設計を共通して提案しています。</p>
+      <p>「正しい目的地にたどり着けるか」という<strong>地理アクセシビリティ</strong>と、「案内情報が本人に届く形になっているか」という<strong>情報アクセシビリティ</strong>を中心に、Copilot・ChatGPT・Claude・Geminiの4者の生成AIに検討してもらった内容を、項目ごとに整理しています。</p>
     </div>
     <div class="common-list" style="margin-top:14px;">
       <ul>
-        <li>「駅から徒歩○分」だけでは不十分。段差・信号・点字ブロックなど具体的な情報が必要。</li>
-        <li>申込や事前連絡の段階で、個別の配慮事項を確認する窓口を設ける。</li>
-        <li>当日に迷った場合の緊急連絡先を用意する。</li>
+        <li>駅から会場まで「移動できるか」（交通アクセシビリティ）と、似た名称・似た外見の施設の中から「正しい目的地を選べるか」（地理アクセシビリティ）は別の課題であり、どちらも重要。</li>
+        <li>案内は写真や地図画像だけに頼らず、スクリーンリーダーで読めるテキスト情報として届ける（情報アクセシビリティ）。</li>
+        <li>支援は「本人の自己責任」か「主催者が全面的に介助」かの二択ではなく、主催者・交通事業者・会場・サポートメンバー・参加者本人がそれぞれ可能な範囲を分担する。</li>
+        <li>申込時に希望や不安を伝えてもらう窓口を作るだけでなく、伝えられた内容に対して必ず個別に返信し、対応の有無をはっきり伝える。</li>
       </ul>
     </div>
   </section>
-
+ 
+  <section id="case">
+    <h2 class="section-title">きっかけとなった出来事（一般化した経緯）</h2>
+    <div class="case-box">
+      <h3>共有された体験</h3>
+      <p>2026年8月、視覚障害のある参加者が、正しい会場名をナビに設定していたにもかかわらず、近隣にある名称の似た別施設へ案内され、猛暑の中を長時間歩いたのちに参加を断念する、という出来事が当事者コミュニティで共有されました。当事者・案内をしてくれた通行人ともに、目的地の名称と住所を確認していたにもかかわらず起きたことから、「駅から会場まで移動できるか」だけでなく「似た施設の中から正しい目的地を選べるか」という視点の必要性が指摘されています。</p>
+      <p style="margin-bottom:0;">以下は、その失敗が積み重なった流れを段階ごとに整理したものです。</p>
+    </div>
+    <div class="flow-wrap" style="margin-top:16px;">
+      <div class="flow-step">
+        <span class="num">1</span>
+        <h3>目的地の識別</h3>
+        <p class="fail">近隣に似た名称の施設があり、正式名称を確認していても取り違えの可能性が残った。</p>
+        <p class="fix">正式名称・住所・正確な地図ピン・「間違えやすい施設」をセットで案内する。</p>
+      </div>
+      <div class="flow-step">
+        <span class="num">2</span>
+        <h3>第三者への確認</h3>
+        <p class="fail">善意で道案内をしてくれた人も、同じように別施設と取り違えた。</p>
+        <p class="fix">スマホでそのまま見せられる短い「目的地確認カード」を用意する。</p>
+      </div>
+      <div class="flow-step">
+        <span class="num">3</span>
+        <h3>アプリでの検索</h3>
+        <p class="fail">候補が複数出ても、最初に読み上げられた項目をそのまま選びやすい。</p>
+        <p class="fix">名称だけでなく番地・ビル名・階・周辺施設で照合するよう案内する。</p>
+      </div>
+      <div class="flow-step">
+        <span class="num">4</span>
+        <h3>現地での移動</h3>
+        <p class="fail">入口の位置や向きが分かりにくく、迷う原因になった。</p>
+        <p class="fix">分岐・横断歩道・入口の位置を文字で説明し、写真は補助として使う。</p>
+      </div>
+      <div class="flow-step">
+        <span class="num">5</span>
+        <h3>環境条件</h3>
+        <p class="fail">炎天下を長く歩くことになり、引き返す体力も残らなかった。</p>
+        <p class="fix">暑さ・雨・工事を想定した代替手段や、早めの連絡・お迎えの選択肢を示す。</p>
+      </div>
+    </div>
+  </section>
+ 
   <section id="theme1">
-    <h2 class="section-title">1. 事前に何を調べるか（駅・経路・会場）</h2>
+    <h2 class="section-title">1. なぜ「駅から会場に着ける」だけでは足りないのか</h2>
     <details class="theme" open>
-      <summary>調査項目の具体例<span class="marker">タップで詳細を開閉</span></summary>
+      <summary>地理アクセシビリティという視点<span class="marker">タップで詳細を開閉</span></summary>
       <div class="theme-body">
-        <p class="purpose"><strong>目的：</strong>参加者が一人で来場しても迷わず・危険なく会場にたどり着けるかを、主催者が事前に把握するため。</p>
+        <p class="purpose"><strong>目的：</strong>駅・経路の情報が十分でも、似た名称の施設が近くにあると目的地そのものを取り違えてしまう。この問題を防ぐための考え方を整理する。</p>
         <div class="ai-grid">
           <div class="ai-card copilot">
             <span class="ai-badge">Copilot</span>
-            <p>最寄駅のバリアフリー情報、会場の入口・段差・受付位置を確認。</p>
-            <p class="small-note"><strong>具体例：</strong>「最寄駅・バス停のバリアフリー情報」「駅から会場までの経路上の注意点」「会場の入口・段差・受付位置」「タクシー利用の可否と配車情報」の4項目を、事前に調べるべきこととして列挙。</p>
-            <p class="small-note"><strong>背景：</strong>4者の中では最も簡潔な整理で、「まず何を押さえればよいか」の全体像を素早くつかむための一覧という位置づけ。個々の項目を深掘りする理由づけは書かれていない。</p>
+            <p>交通アクセシビリティだけでは足りない。地理アクセシビリティ、情報アクセシビリティも合わせて必要になる。</p>
+            <p class="small-note">似た名称の施設が近くにあると、支援者も含めて取り違える。地図を目で確認できず、読み上げでは似た候補を見落としやすい。移動する力ではなく、識別するための情報が足りなかっただけだ。</p>
           </div>
           <div class="ai-card chatgpt">
             <span class="ai-badge">ChatGPT</span>
-            <p>駅員対応の有無・改札数から、交差点・信号・坂道・階段まで、経路上の要素を細かくリスト化。</p>
-            <p class="small-note"><strong>具体例：</strong>駅は「駅名・路線・駅員対応の有無・改札口の数」、経路は「交差点・横断歩道・信号・坂道・階段・歩道の状況」、会場は「正面入口・段差・自動ドア・受付/エレベーター/トイレまでの経路」まで分解。</p>
-            <p class="small-note"><strong>背景：</strong>Googleマップ等の経路検索は距離や所要時間はわかっても「視覚障害者が一人で安全に歩けるか」までは保証しないと明言。だからこそ地図・航空写真・ストリートビューに加え、駅や交通事業者の公式バリアフリー情報など複数の情報源を組み合わせて確認する必要がある、という理由づけをしている。</p>
+            <p>交通・地理・情報という3つのアクセシビリティに切り分け、事例を複数条件が重なった結果として整理する。</p>
+            <p class="small-note">正しい会場をナビに設定していても、近隣の似た名称の別施設へ案内され、猛暑と長時間歩行が重なって参加を断念することがある。目的地の識別→第三者への確認→アプリ利用→現地移動→環境条件という5段階に分解すると、どの段階で情報を補えば防げたかが見えてくる。同様の取り違えは同一ブランドの近隣ホテルや、複数コースのチェックポイントでも起こりうる、より一般的な構造として捉えられる。</p>
           </div>
           <div class="ai-card doc3">
             <span class="ai-badge">Claude</span>
-            <p>駅の公式バリアフリー情報ページや駅構内図PDFを使い、出口ごとの設備の違いを照合する方法を提示。</p>
-            <p class="small-note"><strong>具体例：</strong>JR・私鉄各社が公開するバリアフリー情報ページで、ホームドア・点字ブロック・音響式信号機・多機能トイレの有無を確認。「どの出口が会場に一番近く、かつ段差が少ないか」を駅構内図PDFで出口ごとに照合する、という具体的な調べ方まで踏み込んでいる。</p>
-            <p class="small-note"><strong>背景：</strong>出口によって設備の差が大きい駅が実際に多いため、「駅にエレベーターがある」で終わらせず、会場に近い出口ピンポイントで確認する必要がある、という考え方。</p>
+            <p>「駅から会場まで移動できるか」より前に、「似た名称・似た外見の施設から正しい目的地を選べるか」を確保しておく必要がある。</p>
+            <p class="small-note">正しい目的地名称と住所を確認していても、近隣の声かけ者の案内で名称の似た別施設へ誤って案内されることがある。個人の不注意で片付けるより、同名施設の注意喚起・正確な位置情報・目印の明記という案内設計側の対策を優先したほうが、確実に防げる。</p>
           </div>
           <div class="ai-card gemini">
             <span class="ai-badge">Gemini</span>
-            <p>点字ブロックの連続性、音響式信号の有無、歩道橋・地下道など「注意が必要な分岐」まで具体的に確認。</p>
-            <p class="small-note"><strong>具体例：</strong>降車ホームから改札までの段差、会場に最も近い改札口の名称（例：「〇〇改札（東口）」）の特定、点字ブロックが改札から出口・会場まで連続しているか、音響式信号（ピヨピヨ／カッコー等）の有無、歩道橋・地下道・斜めに入る路・放置自転車の多いエリアなど注意箇所の洗い出し。</p>
-            <p class="small-note"><strong>背景：</strong>「歩道の途中で点字ブロックが途切れる」「音響式信号がない交差点がある」など、視覚障害者にとってのみ危険になりうる箇所は、晴眼者向けの一般的な経路案内では見落とされやすいという観点から、要素を細かく分解している。</p>
+            <p>類似名称の施設・目印になるランドマーク・ピンポイントの位置情報という3つを、調査項目と案内文の両方に書き加える。</p>
+            <p class="small-note">会場周辺に、たとえば「TKPガーデンシティPREMIUM〇〇」と「TKPガーデンシティPREMIUM△△」のような似た名前の施設がないか、Googleマップで実際に確認する。駅・経路の調査項目に、この一手間を組み込む。</p>
           </div>
         </div>
       </div>
     </details>
   </section>
-
+ 
   <section id="theme2">
-    <h2 class="section-title">2. 誰が、どう誘導するか</h2>
+    <h2 class="section-title">2. 類似名称・類似施設の誤認をどう防ぐか</h2>
     <details class="theme">
-      <summary>支援の担い手をどう考えるか<span class="marker">タップで詳細を開閉</span></summary>
+      <summary>誤認防止策の具体的な工夫<span class="marker">タップで詳細を開閉</span></summary>
       <div class="theme-body">
-        <p class="purpose"><strong>目的：</strong>主催者が現地にいなくても、確実に助けを得られる相手（駅・会場スタッフ等）に参加者をつなぐため。</p>
+        <p class="purpose"><strong>目的：</strong>正式名称や住所を確認していても、近くに似た名前の施設があると誤って案内されてしまう。取り違えそのものを防ぐための工夫を整理する。</p>
         <div class="ai-grid">
           <div class="ai-card copilot">
             <span class="ai-badge">Copilot</span>
-            <p>遠方主催者でもできる情報収集（会場管理者への問い合わせ、ストリートビュー確認等）を整理。</p>
-            <p class="small-note"><strong>具体例：</strong>会場管理者への問い合わせ、Googleストリートビューでの確認、入口写真・館内写真の提供依頼、の3つを挙げている。</p>
-            <p class="small-note"><strong>背景：</strong>「移動支援を主催者が請け負うのではなく、必要な情報を整理し提供できる体制を整えることが重要」という基本方針に沿った、情報収集側の工夫。誰が現地で誘導するかという踏み込んだ議論はしていない。</p>
+            <p>近隣の類似名称施設の有無を確認し、間違えやすい建物名を案内に加える。</p>
+            <p class="small-note">「近隣に存在する類似名称施設の有無」「間違えやすい建物名や施設名」を、確認項目としてそのまま加える。</p>
           </div>
           <div class="ai-card chatgpt">
             <span class="ai-badge">ChatGPT</span>
-            <p>主催者・交通事業者・参加者本人の役割を明確に分担。「主催者は誘導しない」ことを案内文にも明記。</p>
-            <p class="small-note"><strong>具体例：</strong>「主催者＝アクセス情報の調査・提供と問い合わせ窓口」「交通事業者＝駅構内・乗換え等の相談対応と移動支援」「参加者本人＝自分に必要な支援を交通事業者や主催者に事前相談」という3者の役割分担表を提示。</p>
-            <p class="small-note"><strong>背景：</strong>主催者が抱え込みすぎると現実的に対応しきれないため、公式な支援機関（交通事業者）に相談する動線を、主催者自身が用意するという考え方。「駅からの誘導は行っていない」ことをあらかじめ案内文で明示するのも、この役割の切り分けを参加者に誤解なく伝えるため。</p>
+            <p>正式名称・住所・建物名を一字一句突き合わせ、近隣の類似名称・同系列・旧称の施設を洗い出して、誤認候補として把握しておく。</p>
+            <p class="small-note">スマートフォンでそのまま見せられる「目的地確認カード」（行き先・住所・建物階・目印・注意書き・地図URLを短くまとめたもの）を用意すれば、道を尋ねた相手との取り違えを減らせる。取り違えは同一ブランドの近隣ホテルや、複数コースのチェックポイントでも起こりうるという、一般化できる問題として位置づける。</p>
           </div>
           <div class="ai-card doc3">
             <span class="ai-badge">Claude</span>
-            <p><strong>駅員による無料の誘導サービス（改札〜ホーム）を案内すること</strong>を最優先策と位置づける独自の視点。会場スタッフへの一時的な誘導依頼も提案。</p>
-            <p class="small-note"><strong>具体例：</strong>多くの鉄道会社が改札からホームまでの誘導を無料で提供しており、前日〜数日前の事前連絡で対応してもらえる旨を案内文に明記し、予約方法（電話番号・Webフォーム）まで参加者に伝えることを提案。会場側も「常駐スタッフに一時的な誘導を依頼できるケースが多い」と指摘。</p>
-            <p class="small-note"><strong>背景：</strong>経路を文字で説明する方法は手間がかかる割に、歩き方の癖は人によって異なるため効果が限定的。それよりも、駅員による公式な人的支援へ確実につなぐ設計の方が、事故が少なく現実的と位置づけている。</p>
+            <p>類似名称・類似施設の有無を確認し、案内文に明記しておく。</p>
+            <p class="small-note">会場名でGoogle検索・Googleマップ検索を行い、近隣、特に徒歩圏内に紛らわしい名称・系列の施設がないか確認する。あれば「〇〇という似た名前の施設が近くにありますが、会場は△△です」と一文添えるだけでよい。この一文があるかないかで、道案内をしてくれた人が誤りに気づけるかどうかが変わる。</p>
           </div>
           <div class="ai-card gemini">
             <span class="ai-badge">Gemini</span>
-            <p>会場ビルの受付・警備員に事前連絡し、迷っている参加者への声かけ・案内を依頼する具体的な進め方を提示。</p>
-            <p class="small-note"><strong>具体例：</strong>「本日、視覚障害をお持ちの参加者が来場予定です。1階等で迷われている様子があれば、会場階までお声がけ・ご案内をお願いできますか」という、会場受付・防災センターへの依頼文言の例まで示している。</p>
-            <p class="small-note"><strong>背景：</strong>現地に案内要員を配置できなくても、もともと建物にいる受付・警備員という「その場にいる人」を巻き込めば安全性を上げられる、という発想。駅員誘導サービスへの言及は薄く、会場側の連携に重点を置いている点がClaudeとの違い。</p>
+            <p>「類似名称施設への誤認防止アラート」を、案内文にそのまま一文として入れる。</p>
+            <p class="small-note">「※近隣にある『〇〇店』と間違われやすいためご注意ください」という警告文を添える。スクリーンリーダーは候補を上から順に読み上げるため、目的の施設が最初に出てくると、その下まで確認しないまま選んでしまいやすい。</p>
           </div>
         </div>
       </div>
     </details>
   </section>
-
+ 
   <section id="theme3">
-    <h2 class="section-title">3. 案内文をどう書くか</h2>
+    <h2 class="section-title">3. 正確な位置情報・目印をどう伝えるか</h2>
     <details class="theme">
-      <summary>事前案内・案内文の工夫<span class="marker">タップで詳細を開閉</span></summary>
+      <summary>地図ピン・ランドマークの伝え方<span class="marker">タップで詳細を開閉</span></summary>
       <div class="theme-body">
-        <p class="purpose"><strong>目的：</strong>参加者本人が状況を判断し、自分に合った移動方法や相談先を選べるようにするため。</p>
+        <p class="purpose"><strong>目的：</strong>住所のテキスト情報だけでは、表記の揺れや似た住所によって誤った場所にたどり着く可能性がある。正確な位置を確実に伝える方法を整理する。</p>
         <div class="ai-grid">
           <div class="ai-card copilot">
             <span class="ai-badge">Copilot</span>
-            <p>駅の設備と「事前連絡してほしい」旨を伝える簡潔な文例を提示。</p>
-            <p class="small-note"><strong>具体例：</strong>「当会場の最寄り駅は○○駅です。駅にはエレベーターがあります。駅員による案内依頼が可能です。視覚障害等によりアクセス情報の詳細を希望される場合は事前にご連絡ください」という短い文例。</p>
-            <p class="small-note"><strong>背景：</strong>細かい経路描写よりも、「まず一言問い合わせてもらえれば個別対応できる」という窓口の存在を伝えることを優先した文面になっている。</p>
+            <p>住所ではなく正確なピン位置のURLを渡し、有名施設を使った位置説明も添える。</p>
+            <p class="small-note">「Googleマップの住所ではなく正確なピン位置URL」「建物入口や外観の写真」「有名施設を使った位置説明（例：アンパンマンミュージアム近く）」の3点を案内に加える。</p>
           </div>
           <div class="ai-card chatgpt">
             <span class="ai-badge">ChatGPT</span>
-            <p>最寄駅・改札・徒歩時間・注意点に加え、「公開情報に基づく」旨の注記まで含めた具体的な文例。</p>
-            <p class="small-note"><strong>具体例：</strong>「最寄り駅は○○線『○○駅』」「○○改札のご利用をおすすめします」「徒歩約○分、○○交差点を横断し○○通りを進む」に加え、「主催者スタッフによる誘導は行っておりません」「鉄道・バス会社等へ事前にご相談いただくことをおすすめします」「以下は公開情報等をもとに作成しており、実際の状況と異なる場合があります」という3つの注記までセットで含む文例。</p>
-            <p class="small-note"><strong>背景：</strong>案内文を「情報の提供」で終わらせず、誘導は行わないという役割の明示・相談先の提示・情報の正確性の限界の3点をセットで伝えることで、参加者が誤解なく自分で判断できるようにする狙い。</p>
+            <p>地図リンクは住所の検索結果に頼らず、主催者自身が現地確認したピンを掲載する。</p>
+            <p class="small-note">会場アクセスのひな形には、正式名称・住所・建物棟階部屋と並べて「正確な地図ピン：［URL］」という欄を独立して設ける。地図サービスは経路候補の把握には便利でも、安全に歩けるかや誘導ブロックの連続性までは保証しない。確認できた事実と、確認できていない事項は分けて案内する。</p>
           </div>
           <div class="ai-card doc3">
             <span class="ai-badge">Claude</span>
-            <p>文章の完成度よりも、駅の誘導サービスへ確実につなぐ内容になっているかを重視。</p>
-            <p class="small-note"><strong>具体例：</strong>案内文そのものの文例は示していないが、「駅係員誘導サービスの存在と予約方法（電話番号・Webフォーム）を案内文に明記すること」を最も重要な要素として位置づけている。</p>
-            <p class="small-note"><strong>背景：</strong>案内文の巧拙よりも、「参加者が公式の支援サービスにたどり着けるかどうか」が結果を左右するという考え方。文章表現の工夫（Geminiのような定量表現等）には触れていない。</p>
+            <p>正確な位置情報（地図URL・ピン）を、テキストとして案内に含めておく。</p>
+            <p class="small-note">GoogleマップやAppleマップの共有リンクを、案内文と申込確認メールの両方に記載する。地図を目視できない以上、ナビアプリに直接読み込ませられる形式であることのほうが、住所のテキストよりも優先度が高い。あわせて、周辺の目立つランドマークも添えておくと、通行人に助けを求める場面での手がかりになる。</p>
           </div>
           <div class="ai-card gemini">
             <span class="ai-badge">Gemini</span>
-            <p>「すぐ」「あっち」等の感覚語を避け、距離・方向を数値で明記。<strong>画像化した地図やPDFのみの案内は読み上げソフトで読めない</strong>ため避けるべき、という指摘は4者の中でGeminiのみ。</p>
-            <p class="small-note"><strong>具体例：</strong>「〇〇改札を出て右（東口方面）へ進みます」「点字ブロックに沿って約100メートル直進すると、左手に信号のある交差点があります」「音響式信号に従って横断歩道を渡り、さらに50メートル直進します」というように、項目ごとに定量的な文を表形式で並べる例を提示。会場内部も「1階入口を入ると正面にエレベーター、3階で降りて右へ進むと301号室」のように具体的に描写。</p>
-            <p class="small-note"><strong>背景：</strong>音声読み上げソフトを利用する参加者が多いことを前提に、「テキスト形式（メール本文やプレーンテキスト）で明確に伝える」ことを案内文設計の出発点にしている。画像化された地図やPDFのみの案内は読み上げ対象にならず、参加者に情報が届かないという実害を防ぐための指摘。</p>
+            <p>ピンポイントの位置情報URLを渡し、案内文には目印・ランドマークも書き添える。</p>
+            <p class="small-note">名称検索での表記揺れや誤入力を避けるため、会場の正確なピン位置を指す直リンクをメールに記載する。案内文の表には「〇〇ミュージアムの手前約50メートルの位置になります（近くの人に尋ねる際にお伝えください）」という一行を加え、道中でスマホ画面をそのまま見せられる形にしておく。</p>
           </div>
         </div>
       </div>
     </details>
   </section>
-
+ 
   <section id="theme4">
-    <h2 class="section-title">4. 申込時に何を聞くか</h2>
+    <h2 class="section-title">4. テキストによる経路案内をどう書くか</h2>
     <details class="theme">
-      <summary>個別ヒアリングの設計<span class="marker">タップで詳細を開閉</span></summary>
+      <summary>経路案内の文章化<span class="marker">タップで詳細を開閉</span></summary>
       <div class="theme-body">
-        <p class="purpose"><strong>目的：</strong>「視覚障害がある」という情報だけで一律の対応を決めず、本人が必要とする支援を把握するため。</p>
+        <p class="purpose"><strong>目的：</strong>「駅から徒歩○分」だけでなく、曲がる場所や目印を具体的な言葉で伝えることで、スクリーンリーダー利用者にも状況が伝わる案内にする。</p>
         <div class="ai-grid">
           <div class="ai-card copilot">
             <span class="ai-badge">Copilot</span>
-            <p>配慮事項を尋ねる自由記述欄を申込フォームに設置。</p>
-            <p class="small-note"><strong>具体例：</strong>「配慮が必要な事項を問い合わせる欄を設け、個別にアクセス情報を提供できるようにする」とだけ簡潔に述べている。</p>
-            <p class="small-note"><strong>背景：</strong>詳細な聞き取り項目までは踏み込んでおらず、「窓口を用意すること自体」を重要なポイントとして挙げるにとどまる。</p>
+            <p>駅から会場までの歩行環境と、著名なランドマークを事前調査の対象に加える。</p>
+            <p class="small-note">「駅から会場までの歩行環境」「会場周辺の著名なランドマーク」を、事前に調べる項目として挙げる。</p>
           </div>
           <div class="ai-card chatgpt">
             <span class="ai-badge">ChatGPT</span>
-            <p>「移動について伝えておきたいことは？」という自由記述欄を用意。</p>
-            <p class="small-note"><strong>具体例：</strong>「会場への移動について、主催者に事前に伝えておきたいことはありますか？」という具体的な設問文を提示。</p>
-            <p class="small-note"><strong>背景：</strong>「視覚障害があることだけを理由に主催者が支援内容を決めるのではなく、本人が必要とする支援や不安を事前に伝えられるようにすることが重要」と明言。属性で対応を決め打ちしないという考え方が根底にある。</p>
+            <p>会場名・住所・地図ピン・最寄駅・推奨改札・徒歩時間・交差点や目印・取り違え注意・連絡先を、1つのテンプレートにまとめて漏れをなくす。</p>
+            <p class="small-note">「〇〇改札を出て〇〇へ進み、〇〇交差点で右／左へ曲がります。〇〇を通過した先の入口をご利用ください」のように、改札・分岐・交差点・目印・入口の順で書く。正式名称・住所・地図ピン・推奨駅/改札・類似名称の注意・文字経路・入口/受付・当日連絡先・支援相談方法という最低限10項目を、テンプレート化して埋め漏れを防ぐ。</p>
           </div>
           <div class="ai-card doc3">
             <span class="ai-badge">Claude</span>
-            <p>障害の程度、白杖・盲導犬の使用有無、単独歩行か同行者ありかまで、個別ヒアリングの窓口で具体的に確認。</p>
-            <p class="small-note"><strong>具体例：</strong>「視覚障害の程度」「白杖・盲導犬の使用有無」「単独歩行か同行者ありか」の3点を挙げ、これらによって必要な支援が大きく異なるとしている。聞き取った内容をもとに、駅誘導サービスの予約や当日の連絡手段まで一緒に調整することを提案。</p>
-            <p class="small-note"><strong>背景：</strong>ヒアリングを「窓口を作って終わり」にせず、聞き取った内容を他の対応（駅員誘導サービスの予約等）に直結させる設計にしている点が、他の3者との違い。</p>
+            <p>経路の文字化は続けつつも、そこに頼りすぎない位置づけにとどめる。</p>
+            <p class="small-note">「改札を出て右に進み、最初の信号を渡って直進、2つ目の建物の角を左折」のように、曲がる回数と目印をテキストで書く。ただし歩き方の癖は人それぞれで、文字での経路説明は手間のわりに効果が限定的になりやすい。まず優先すべきは駅係員の誘導サービスに確実につなぐことで、経路の文字化はその補助にとどめておく。</p>
           </div>
           <div class="ai-card gemini">
             <span class="ai-badge">Gemini</span>
-            <p>この項目については明記なし（案内文・当日体制の設計に重点）。</p>
-            <p class="small-note"><strong>背景：</strong>Geminiの提案は「調査」「事前の案内文」「当日の体制」の3段構成が中心で、申込段階でのヒアリング設計には触れていない。案内文の書き方や当日の座席配慮など、別の部分に紙幅を割いている。</p>
+            <p>「すぐ」「あっち」のような感覚的な言葉を避け、距離と方向を数値で書いた文例を表にする。</p>
+            <p class="small-note">「点字ブロックに沿って約100メートル直進すると、左手に信号のある交差点があります」「音響式信号に従って横断歩道を渡り、さらに50メートル直進します」のように、区間ごとに区切って数値で書く。道に迷ったとき周囲の人にそのまま画面を見せて尋ねられる、「見せる用のテキスト」として仕上げておく。</p>
           </div>
         </div>
       </div>
     </details>
   </section>
-
+ 
   <section id="theme5">
-    <h2 class="section-title">5. 当日の体制</h2>
+    <h2 class="section-title">5. 当日・イレギュラー時のリカバリー体制</h2>
     <details class="theme">
-      <summary>当日、何かあったときの対応<span class="marker">タップで詳細を開閉</span></summary>
+      <summary>迷ったとき・悪天候時の対応<span class="marker">タップで詳細を開閉</span></summary>
       <div class="theme-body">
-        <p class="purpose"><strong>目的：</strong>現地に案内要員を配置できなくても、迷った際に助けを求められる状態を作るため。</p>
+        <p class="purpose"><strong>目的：</strong>事前準備をしても、当日誤った場所に着いてしまう・悪天候で体力を消耗するといったイレギュラーは起こりうる。そのときに参加を断念せずに済む体制を整理する。</p>
         <div class="ai-grid">
           <div class="ai-card copilot">
             <span class="ai-badge">Copilot</span>
-            <p>まとめの中で簡潔に言及するにとどまる。</p>
-            <p class="small-note"><strong>具体例：</strong>「現地要員の配置が困難な場合でも、事前の情報収集と個別案内によって交通アクセシビリティを向上させることができる」という総括的な一文のみ。</p>
-            <p class="small-note"><strong>背景：</strong>当日体制そのものよりも、事前準備の重要性を最後にもう一度強調する形でまとめられている。</p>
+            <p>支援を5段階に分け、必要な人が必要な分だけ選べるようにする。</p>
+            <p class="small-note">レベル1：詳細なアクセス情報の提供／レベル2：写真付き案内資料の提供／レベル3：希望者への個別相談対応／レベル4：最寄駅での待ち合わせ支援／レベル5：誘導員配置（大規模イベント向け）。自力での参加を望む人も多いため、支援を一律に押し付けない形にする。</p>
           </div>
           <div class="ai-card chatgpt">
             <span class="ai-badge">ChatGPT</span>
-            <p>「駅からの誘導は行わない」ことを明示した上で、鉄道・バス会社への事前相談を勧める形で誘導。</p>
-            <p class="small-note"><strong>具体例：</strong>案内文の中に「主催者による駅から会場までの誘導は行っていないこと」「移動に不安がある場合は、利用する鉄道会社・バス会社等へ、駅係員による案内や乗換え等のサポートについて事前にご相談いただくことをおすすめします」という2文をセットで入れることを提案。</p>
-            <p class="small-note"><strong>背景：</strong>当日その場での対応を厚くするのではなく、事前の時点で「主催者は誘導しない・公式サービスに相談を」という期待値をそろえておくことで、当日のトラブルを未然に防ぐという考え方。</p>
+            <p>当日連絡の手段を複数用意し、誤った施設に着いてしまった場合の対応まで前もって決めておく。</p>
+            <p class="small-note">現在地がわからない場合は、近くの施設名・交差点・駅出口など読み上げ可能な情報を聞き取る。誤った施設に着いてしまった場合のタクシー移動・所要時間・途中参加の扱いも、事前に決めておく。暑さや体調不良が疑われる場合は移動の継続を促さず、安全の確保を最優先にする。人員が「出せない」「1人だけ出せる」「2人以上出せる」「地域協力者がいる」「悪天候・猛暑」という条件ごとに、現実的にできる対応を切り分けておく。</p>
           </div>
           <div class="ai-card doc3">
             <span class="ai-badge">Claude</span>
-            <p>主催者・会場スタッフの携帯番号を伝え、「迷ったら電話をもらえば外まで迎える」という最低限の安全網を用意。</p>
-            <p class="small-note"><strong>具体例：</strong>「人員を交通要所に配置できなくても、主催者や会場スタッフの携帯番号を参加者に伝え、『迷った際は電話をください、会場スタッフが外まで迎えに出ます』という体制だけは最低限用意する」と明記。</p>
-            <p class="small-note"><strong>背景：</strong>完璧な当日体制を目指すのではなく、「現地に不慣れな主催者でも用意できる、最低限だが実質的な安全網」という現実的なラインを設定している点が特徴。</p>
+            <p>電話一本で外まで迎えに出るという最低限の安全網に加え、駅での集合・同行という選択肢も用意しておく。</p>
+            <p class="small-note">「最寄り駅の改札に◯時に集合し、希望者は一緒に向かう」という選択肢を検討する。誘導員を常時配置できなくても、集合の時間と場所さえ1つ決めれば実現でき、参加者同士の同行にもつながる。手厚い体制を目指すより、まず最低限を確実に用意することを優先する。</p>
           </div>
           <div class="ai-card gemini">
             <span class="ai-badge">Gemini</span>
-            <p>電話サポート担当を開場前後に固定配置し、加えて出入口に近い配慮席をあらかじめ確保することまで提案。</p>
-            <p class="small-note"><strong>具体例：</strong>「開場時間前後は、主催者担当者の1名が電話にすぐ出られる体制を維持する」「必要に応じて電話で位置を確認しながら言葉で誘導する」「出入口に近く移動が容易な座席や、音声が聞き取りやすい最前列付近にあらかじめ配慮席を確保する」の3点。</p>
-            <p class="small-note"><strong>背景：</strong>当日の対応を「駅・入口までのサポート」だけで終わらせず、会場に入った後の座席という会場内部の体験まで一貫して配慮している点が、他の3者にはない広がり。</p>
+            <p>駅前でのピンポイントのお迎えを事前受託制にし、暑さや荒天を見越して早めに希望を聞いておく。</p>
+            <p class="small-note">「最寄り駅の改札口でのピンポイント待ち合わせ・手引きサポート」を事前希望制で受け付ければ、1〜2名の人員でも対応できる。夏の炎天下や荒天は迷ったときのリスクがそのぶん高くなるため、「お持ちのナビアプリの確認」や「改札でのお迎え希望」の有無を、早い段階でヒアリングしておく。</p>
           </div>
         </div>
       </div>
     </details>
   </section>
-
+ 
+  <section id="theme6">
+    <h2 class="section-title">6. 申込時のヒアリングと支援の選び方</h2>
+    <details class="theme">
+      <summary>聞き方・返し方の工夫<span class="marker">タップで詳細を開閉</span></summary>
+      <div class="theme-body">
+        <p class="purpose"><strong>目的：</strong>申込時に希望を聞く窓口があっても、返信がなければ参加者は対応してもらえるか分からないまま当日を迎えることになる。聞き方と、その後の対応の両方を整理する。</p>
+        <div class="ai-grid">
+          <div class="ai-card copilot">
+            <span class="ai-badge">Copilot</span>
+            <p>配慮事項・移動支援の希望・駅からの案内情報の希望・当日の連絡手段を、申込フォームで確認する。</p>
+            <p class="small-note">「配慮が必要な事項」「移動支援希望の有無」「駅からの案内情報希望の有無」「当日連絡可能な手段」の4項目を確認する。</p>
+          </div>
+          <div class="ai-card chatgpt">
+            <span class="ai-badge">ChatGPT</span>
+            <p>自由記述で受けた申出を勝手に解釈せず、本人にもう一段具体的に確認し直す。</p>
+            <p class="small-note">「車いすルートが必要」と推測してこちらで情報を追加するだけでは、本人が伝えたかった不安とずれることがある。申出を受けたら「ご希望は駅からの同行でしょうか、段差の少ない経路情報でしょうか」のように、具体的に聞き直す。障害名を尋ねることより、参加に必要な配慮そのものを本人の言葉で伝えられる設計のほうを重視する。</p>
+          </div>
+          <div class="ai-card doc3">
+            <span class="ai-badge">Claude</span>
+            <p>お迎え・送迎の事前依頼制度をわかりやすく明記したうえで、申出への個別返信を徹底する。</p>
+            <p class="small-note">「最寄り駅までのお迎えが必要な場合は事前にご連絡ください」という案内はよく使われるが、要望に返信がなければ、参加者は対応してもらえるかどうかわからないまま当日を迎えることになる。依頼が来たら必ず個別に返信し、対応可否と当日の待ち合わせ方法まで明確にする。あわせて、交通系ICカードでの乗換えのように、実際には使える仕組みが「複雑で使えない」と思い込まれてしまう情報のバリアにも目を向けておく。</p>
+          </div>
+          <div class="ai-card gemini">
+            <span class="ai-badge">Gemini</span>
+            <p>気候のリスクに応じて、早めに意思確認をしておく。</p>
+            <p class="small-note">夏の猛暑や荒天が予想される場合は、事前メール等で「改札でのお迎え希望」の有無を早めにヒアリングしておく。</p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+ 
+  <section id="summary">
+    <h2 class="section-title">7. 4者の視点をふまえた、無理のない支援づくり</h2>
+    <div class="intro-box">
+      <p>ここまでの内容は、対策として「すべて実施すべきこと」ではありません。人員や時間には限りがあるため、下から順に積み上げていく考え方で十分です。上の層に進めるかどうかは、そのときの体制に合わせて判断してください。</p>
+    </div>
+    <div class="layer-stack" style="margin-top:14px;">
+      <div class="layer-card">
+        <span class="lnum">1</span>
+        <div><h3>だれでも読める基本情報</h3><p>会場の正式名称・住所・建物や階、最寄り駅、駅からの大まかな行き方を、テキストで読める形にする。ここまでは多くの案内ですでに用意されている。</p></div>
+      </div>
+      <div class="layer-card">
+        <span class="lnum">2</span>
+        <div><h3>正しい場所を選べる情報</h3><p>正確な地図ピン、紛らわしい施設への注意、目印になるランドマークを加える。「移動できるか」ではなく「正しい場所を選べるか」を支える層。</p></div>
+      </div>
+      <div class="layer-card">
+        <span class="lnum">3</span>
+        <div><h3>当日のリカバリー</h3><p>迷った時・誤った場所に着いた時に連絡できる窓口と対応時間を決めておく。猛暑や荒天など、条件が悪化した場合の代替手段もあらかじめ考えておく。</p></div>
+      </div>
+      <div class="layer-card">
+        <span class="lnum">4</span>
+        <div><h3>希望する人への人的支援</h3><p>駅前でのお迎えや同行を、希望者向けの予約制で用意する。全員に一律で提供するのではなく、必要な人が選べる形にする。</p></div>
+      </div>
+    </div>
+    <h3 style="margin-top:28px;font-size:1.1rem;color:var(--navy-dark);">開催前チェックリスト</h3>
+    <p style="font-size:0.95rem;color:var(--text-sub);margin-top:4px;">項目を増やしすぎると運用が続かないため、優先度別に絞っています。「必須」の5つだけでも、取り違えや当日の孤立はかなり防げます。</p>
+    <div class="priority-block">
+      <span class="priority-head must">必須（ここだけは）</span>
+      <ul class="check-list">
+        <li>会場の正式名称・住所・建物名／階／部屋を確認した</li>
+        <li>主催者自身が確認した、正確な地図ピンのURLを用意した</li>
+        <li>近隣に紛らわしい施設がないか調べ、あれば案内文に一言添えた</li>
+        <li>案内文を、画像やPDFだけに頼らずテキストで用意した</li>
+        <li>当日迷った際の連絡先と、対応できる時間帯を明記した</li>
+      </ul>
+    </div>
+    <div class="priority-block">
+      <span class="priority-head should">推奨（できれば）</span>
+      <ul class="check-list">
+        <li>最寄り駅の推奨改札と、駅員誘導サービスの利用方法を確認した</li>
+        <li>駅から会場までの主な曲がり角・目印を文章にした</li>
+        <li>申込フォームに、希望を書ける自由記述欄を設けた</li>
+        <li>申出があった場合は、必ず個別に返信して対応可否を伝えた</li>
+      </ul>
+    </div>
+    <div class="priority-block">
+      <span class="priority-head optional">余力があれば</span>
+      <ul class="check-list">
+        <li>希望者向けに、駅前でのピンポイントのお迎え（予約制）を用意した</li>
+        <li>猛暑・荒天時の代替手段（タクシー案内等）を考えておいた</li>
+        <li>会場の受付・警備員に、当日の来場予定を事前連絡した</li>
+      </ul>
+    </div>
+    <h3 style="margin-top:28px;font-size:1.1rem;color:var(--navy-dark);">参加者向け案内文のひな形</h3>
+    <p style="font-size:0.95rem;color:var(--text-sub);margin-top:4px;">空欄を埋めるだけで、必須項目を満たした案内文になります。埋められない項目があれば、それが次に調べるべきことです。</p>
+    <div class="template-box" style="margin-top:12px;">
+      <dl>
+        <dt>会場</dt><dd>［正式名称］</dd>
+        <dt>住所</dt><dd>［住所］</dd>
+        <dt>建物・階・部屋</dt><dd>［ビル名／階／部屋名］</dd>
+        <dt>正確な地図ピン</dt><dd>［確認済みの地図URL］</dd>
+        <dt>最寄り駅・改札</dt><dd>［路線・駅名／推奨改札］</dd>
+      </dl>
+      <div class="free-text"><strong>駅から会場まで</strong>［改札］を出て［方向］へ進みます。［交差点・分岐・目印］で［右／左］に進み、［ランドマーク］の［手前／先］にある入口をご利用ください。</div>
+      <div class="free-text"><strong>取り違え注意</strong>近くに「［似た名称の施設］」がありますが、今回の会場とは別です。会場は「［識別できる特徴］」にあります。</div>
+      <div class="free-text"><strong>当日、道に迷ったとき</strong>［電話／SMS等の連絡先］　対応可能時間：［　　］</div>
+      <div class="free-text"><strong>事前の相談</strong>移動やお迎え、盲導犬同伴など、事前に伝えておきたいことがあれば［期限］までに［連絡方法］でお知らせください。内容を確認し、個別にご連絡します。</div>
+      <p class="template-note">※この情報は［確認日］時点で主催者が確認した内容です。工事や交通状況により変わる場合があります。</p>
+    </div>
+  </section>
+ 
 </main>
-
+ 
 <footer>
-  <p>本資料は、Copilot・ChatGPT・Gemini・Claudeの4者の提案内容をもとに、共有・説明用に項目を再整理したものです。各AIの原文とは表現が異なります。</p>
+  <p>本資料は、Copilot・ChatGPT・Claude・Geminiの4者による提案をもとに、共有・説明用に項目を再整理したものです。各AIの原文とは表現が異なります。内容の一部は、当事者コミュニティ（LINEオープンチャット）で共有された体験をもとにしていますが、個人が特定される情報は含めていません。</p>
 </footer>
-
+ 
 </body>
 </html>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
