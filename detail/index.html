@@ -1,6 +1,3 @@
-
-
-Geo detail · HTML
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -46,8 +43,10 @@ Geo detail · HTML
   }
   nav.toc{max-width:900px;margin:20px auto 0;padding:0 20px;}
   nav.toc h2{font-size:1rem;margin:0 0 8px;color:var(--text-sub);}
-  nav.toc ol{margin:0;padding-left:1.2em;columns:2;font-size:0.95rem;}
-  nav.toc li{margin-bottom:4px;}
+  nav.toc ol{list-style:none;margin:0;padding-left:0;font-size:0.95rem;}
+  nav.toc li{margin-bottom:6px;}
+  nav.toc ol ol{list-style:none;padding-left:1.4em;margin:6px 0 10px;font-size:0.88rem;color:var(--text-sub);border-left:2px solid var(--border);}
+  nav.toc ol ol li{margin-bottom:4px;}
   main{max-width:900px;margin:0 auto;padding:20px 20px 60px;}
   section{margin-top:36px;}
   .intro-box{background:var(--card-bg);border:1px solid var(--border);border-left:6px solid var(--navy);border-radius:8px;padding:18px 20px;}
@@ -122,7 +121,36 @@ Geo detail · HTML
   .template-note{font-size:0.85rem;color:var(--text-sub);margin-top:10px;}
  
   footer{max-width:900px;margin:40px auto 0;padding:20px;font-size:0.9rem;color:var(--text-sub);border-top:1px solid var(--border);}
-  @media print{ details.theme{border:1px solid #999;} }
+  @media print{
+    details.theme{border:1px solid #999;}
+    details.theme > summary .marker{display:none;}
+    nav.toc a{color:#000;text-decoration:none;}
+  }
+
+  /* 構造・可読性・操作性の改善 */
+  :target{scroll-margin-top:1rem;}
+  .subsection-title{font-size:1.1rem;font-weight:700;color:var(--navy-dark);margin:28px 0 10px;line-height:1.6;}
+  #theme1-1.subsection-title,
+  #summary-1.subsection-title{margin-top:20px;}
+
+  @media (max-width:699px){
+    body{font-size:16px;line-height:1.75;}
+    header.page-header{padding:24px 16px 22px;}
+    header.page-header h1{font-size:1.35rem;}
+    nav.toc{padding:0 16px;}
+    nav.toc ol ol{padding-left:1em;}
+    main{padding:14px 16px 48px;}
+    section{margin-top:30px;}
+    .intro-box,.common-list,.case-box,.theme-body,.template-box{padding:14px 16px;}
+    details.theme > summary{padding:14px 16px;align-items:flex-start;}
+    details.theme > summary .marker{white-space:normal;text-align:right;}
+    .template-box dl{grid-template-columns:1fr;gap:2px;}
+    .template-box dd{margin:0 0 10px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+  }
  
 </style>
 </head>
@@ -133,31 +161,45 @@ Geo detail · HTML
 <header class="page-header">
   <div class="inner">
     <h1>視覚障害のある参加者への交通・地理アクセシビリティ対応</h1>
-    <p>当事者コミュニティで共有された体験をもとに、Copilot・ChatGPT・Claude・Geminiの4者が検討した提案の比較</p>
-    <span class="version-tag">詳細版</span>
+    <p>当事者コミュニティで共有された体験をもとに、4つの生成AI（Copilot・ChatGPT・Claude・Gemini）に対応案を検討してもらいました。</p>
   </div>
 </header>
  
-<div class="version-switch"><a href="geo_simple.html">← 簡易版もあります。</a></div>
  
 <nav class="toc" aria-label="目次">
   <h2>目次</h2>
   <ol>
-    <li><a href="#common">共通する考え方</a></li>
-    <li><a href="#case">きっかけとなった出来事</a></li>
-    <li><a href="#theme1">なぜ地理アクセシビリティが必要か</a></li>
-    <li><a href="#theme2">類似名称・類似施設の誤認防止</a></li>
-    <li><a href="#theme3">正確な位置情報・目印</a></li>
-    <li><a href="#theme4">テキストによる経路案内</a></li>
-    <li><a href="#theme5">当日・イレギュラー時のリカバリー体制</a></li>
-    <li><a href="#theme6">申込時のヒアリングと支援の選び方</a></li>
-    <li><a href="#summary">無理のない支援づくり（まとめ）</a></li>
+    <li><a href="#common">1. 共通する考え方</a></li>
+    <li><a href="#case">2. きっかけとなった出来事</a>
+      <ol>
+        <li><a href="#app-search-note">① アプリでの検索についての注意点</a></li>
+        <li><a href="#kotonavi-ref">② 参考：ことばの道案内サイト</a></li>
+      </ol>
+    </li>
+    <li><a href="#theme1">3. なぜ「駅から会場に着ける」だけでは足りないのか</a>
+      <ol>
+        <li><a href="#theme1-1">① 地理アクセシビリティという観点</a></li>
+        <li><a href="#theme2">② 類似名称・類似施設の誤認をどう防ぐか</a></li>
+        <li><a href="#theme3">③ 正確な位置情報・目印をどう伝えるか</a></li>
+        <li><a href="#theme4">④ テキストによる経路案内をどう書くか</a></li>
+        <li><a href="#theme5">⑤ 当日・イレギュラー時のリカバリー体制</a></li>
+        <li><a href="#theme6">⑥ 申込時のヒアリングと支援の選び方</a></li>
+      </ol>
+    </li>
+    <li><a href="#summary">4. 無理のない支援づくり（主催者への提言のために）</a>
+      <ol>
+        <li><a href="#summary-1">① 生成AI4者の意見まとめ</a></li>
+        <li><a href="#summary-2">② 開催前チェックリスト</a></li>
+        <li><a href="#summary-3">③ 参加者向け案内文のひな形</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
  
 <main id="main-content">
  
-  <section id="common">
+  <section id="common" aria-labelledby="common-title">
+    <h2 class="section-title" id="common-title">1. 共通する考え方</h2>
     <div class="intro-box">
       <p>「正しい目的地にたどり着けるか」という<strong>地理アクセシビリティ</strong>と、「案内情報が本人に届く形になっているか」という<strong>情報アクセシビリティ</strong>を中心に、Copilot・ChatGPT・Claude・Geminiの4者の生成AIに検討してもらった内容を、項目ごとに整理しています。</p>
     </div>
@@ -171,8 +213,8 @@ Geo detail · HTML
     </div>
   </section>
  
-  <section id="case">
-    <h2 class="section-title">きっかけとなった出来事（一般化した経緯）</h2>
+  <section id="case" aria-labelledby="case-title">
+    <h2 class="section-title" id="case-title">2. きっかけとなった出来事</h2>
     <div class="case-box">
       <h3>共有された体験</h3>
       <p>2026年8月、視覚障害のある参加者が、正しい会場名をナビに設定していたにもかかわらず、近隣にある名称の似た別施設へ案内され、猛暑の中を長時間歩いたのちに参加を断念する、という出来事が当事者コミュニティで共有されました。当事者・案内をしてくれた通行人ともに、目的地の名称と住所を確認していたにもかかわらず起きたことから、「駅から会場まで移動できるか」だけでなく「似た施設の中から正しい目的地を選べるか」という視点の必要性が指摘されています。</p>
@@ -210,10 +252,27 @@ Geo detail · HTML
         <p class="fix">暑さ・雨・工事を想定した代替手段や、早めの連絡・お迎えの選択肢を示す。</p>
       </div>
     </div>
+
+    <h3 id="app-search-note" class="subsection-title">①アプリでの検索についての注意点</h3>
+    <p style="margin:0 0 10px;font-size:0.98rem;color:var(--text);">
+      アプリでの検索は、複数の候補が表示されても、最初の候補が正しい目的地であった場合は、そのまま選んでしまう。読み上げは上から順に進むため、正解にたどり着けた時点で、下の候補まで読み上げさせることをしない。そのため、近くに似た名称の施設があること自体に、気づけないまま当日を迎えてしまう。
+    </p>
+    <p style="margin:0;font-size:0.98rem;color:var(--text);">
+      つまり、「候補の見分け方」を案内するだけでは足りず、正解不正解に関わらず、近隣に似た名称の施設があることそのものを、案内文の中で、別途注意喚起しておく必要がある。
+    </p>
+
+    <h3 id="kotonavi-ref" class="subsection-title">②参考：ことばの道案内サイト</h3>
+    <p style="margin:0;font-size:0.98rem;color:var(--text);">
+      ウォーキングナビ（ことばの道案内）や点字ブロックの敷設データを検索できるサイトとして、<a href="https://www.kotonavi.jp" target="_blank" rel="noopener noreferrer" aria-label="ことなび（外部サイト、新しいタブで開きます）">ことなび（kotonavi.jp）</a>がある。掲載されている施設数は多くなく、これを聞けば確実というわけではないが、経路を言葉で確認する際の参考情報として活用できる。
+    </p>
   </section>
  
-  <section id="theme1">
-    <h2 class="section-title">1. なぜ「駅から会場に着ける」だけでは足りないのか</h2>
+  <section id="theme1" aria-labelledby="theme1-title">
+    <h2 class="section-title" id="theme1-title">3. なぜ「駅から会場に着ける」だけでは足りないのか</h2>
+    <p style="margin:0 0 20px;font-size:0.98rem;color:var(--text);">
+      続く①〜⑥では、地理アクセシビリティをめぐる課題について、生成AI（Copilot、ChatGPT、Claude、Gemini）の見解や提案を紹介する。
+    </p>
+    <h3 id="theme1-1" class="subsection-title">①地理アクセシビリティという観点</h3>
     <details class="theme" open>
       <summary>地理アクセシビリティという視点<span class="marker">タップで詳細を開閉</span></summary>
       <div class="theme-body">
@@ -242,10 +301,7 @@ Geo detail · HTML
         </div>
       </div>
     </details>
-  </section>
- 
-  <section id="theme2">
-    <h2 class="section-title">2. 類似名称・類似施設の誤認をどう防ぐか</h2>
+  <h3 id="theme2" class="subsection-title">②類似名称・類似施設の誤認をどう防ぐか</h3>
     <details class="theme">
       <summary>誤認防止策の具体的な工夫<span class="marker">タップで詳細を開閉</span></summary>
       <div class="theme-body">
@@ -274,10 +330,7 @@ Geo detail · HTML
         </div>
       </div>
     </details>
-  </section>
- 
-  <section id="theme3">
-    <h2 class="section-title">3. 正確な位置情報・目印をどう伝えるか</h2>
+  <h3 id="theme3" class="subsection-title">③正確な位置情報・目印をどう伝えるか</h3>
     <details class="theme">
       <summary>地図ピン・ランドマークの伝え方<span class="marker">タップで詳細を開閉</span></summary>
       <div class="theme-body">
@@ -306,10 +359,7 @@ Geo detail · HTML
         </div>
       </div>
     </details>
-  </section>
- 
-  <section id="theme4">
-    <h2 class="section-title">4. テキストによる経路案内をどう書くか</h2>
+  <h3 id="theme4" class="subsection-title">④テキストによる経路案内をどう書くか</h3>
     <details class="theme">
       <summary>経路案内の文章化<span class="marker">タップで詳細を開閉</span></summary>
       <div class="theme-body">
@@ -338,10 +388,7 @@ Geo detail · HTML
         </div>
       </div>
     </details>
-  </section>
- 
-  <section id="theme5">
-    <h2 class="section-title">5. 当日・イレギュラー時のリカバリー体制</h2>
+  <h3 id="theme5" class="subsection-title">⑤当日・イレギュラー時のリカバリー体制</h3>
     <details class="theme">
       <summary>迷ったとき・悪天候時の対応<span class="marker">タップで詳細を開閉</span></summary>
       <div class="theme-body">
@@ -370,10 +417,7 @@ Geo detail · HTML
         </div>
       </div>
     </details>
-  </section>
- 
-  <section id="theme6">
-    <h2 class="section-title">6. 申込時のヒアリングと支援の選び方</h2>
+  <h3 id="theme6" class="subsection-title">⑥申込時のヒアリングと支援の選び方</h3>
     <details class="theme">
       <summary>聞き方・返し方の工夫<span class="marker">タップで詳細を開閉</span></summary>
       <div class="theme-body">
@@ -404,8 +448,9 @@ Geo detail · HTML
     </details>
   </section>
  
-  <section id="summary">
-    <h2 class="section-title">7. 4者の視点をふまえた、無理のない支援づくり</h2>
+  <section id="summary" aria-labelledby="summary-title">
+    <h2 class="section-title" id="summary-title">4. 無理のない支援づくり（主催者への提言のために）</h2>
+    <h3 id="summary-1" class="subsection-title">①生成AI4者の意見まとめ</h3>
     <div class="intro-box">
       <p>ここまでの内容は、対策として「すべて実施すべきこと」ではありません。人員や時間には限りがあるため、できることを積み上げていくための参考としてください。</p>
     </div>
@@ -427,7 +472,7 @@ Geo detail · HTML
         <div><h3>希望する人への人的支援</h3><p>駅前でのお迎えや同行を、希望者向けの予約制で用意する。全員に一律で提供するのではなく、必要な人が選べる形にする。</p></div>
       </div>
     </div>
-    <h3 style="margin-top:28px;font-size:1.1rem;color:var(--navy-dark);">開催前チェックリスト</h3>
+    <h3 id="summary-2" class="subsection-title">②開催前チェックリスト</h3>
     <p style="font-size:0.95rem;color:var(--text-sub);margin-top:4px;">項目を増やしすぎると運用が続かないため、優先度別に絞っています。「必須」の5つだけでも、取り違えや当日の孤立はかなり防げます。</p>
     <div class="priority-block">
       <span class="priority-head must">必須（ここだけは）</span>
@@ -456,7 +501,7 @@ Geo detail · HTML
         <li>会場の受付・警備員に、当日の来場予定を事前連絡した</li>
       </ul>
     </div>
-    <h3 style="margin-top:28px;font-size:1.1rem;color:var(--navy-dark);">参加者向け案内文のひな形</h3>
+    <h3 id="summary-3" class="subsection-title">③参加者向け案内文のひな形</h3>
     <p style="font-size:0.95rem;color:var(--text-sub);margin-top:4px;">空欄を埋めるだけで、必須項目を満たした案内文になります。埋められない項目があれば、それが次に調べるべきことです。</p>
     <div class="template-box" style="margin-top:12px;">
       <dl>
@@ -478,21 +523,9 @@ Geo detail · HTML
  
 <footer>
   <p>本資料は、Copilot・ChatGPT・Claude・Geminiの4者による提案をもとに、共有・説明用に項目を再整理したものです。内容の一部は、当事者コミュニティ（LINEオープンチャット）で共有された体験をもとにしています。</p>
+  <p>作成日時：2026年9月5日</p>
 </footer>
  
 </body>
 </html>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
